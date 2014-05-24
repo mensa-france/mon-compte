@@ -1,0 +1,4 @@
+define [
+	'templates/helpers/appVersion'
+], ()->
+

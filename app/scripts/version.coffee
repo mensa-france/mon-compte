@@ -1,0 +1,5 @@
+define [
+],() ->
+
+	appVersion = 'undefined'
+	appVersion
