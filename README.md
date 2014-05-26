@@ -31,6 +31,12 @@ L'environnement de développement requiert les logiciels suivants:
 ### Windows
 * Installez Linux ;-)
 
+Recommandations optionnelles
+----------------------------
+* [GitX-dev](http://rowanj.github.io/gitx/)
+* [gitg](https://wiki.gnome.org/action/show/Apps/Gitg?action=show)
+* [Sublime Text](http://www.sublimetext.com/)
+* [Atom](https://atom.io/)
 
 Mise en place du projet
 -----------------------
