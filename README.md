@@ -50,7 +50,7 @@ Pour démarrer le serveur de dev, il suffit alors de lancer dans le dossier du p
 
 Celui-ci support le live reload lorsque les fichiers du projet sont modifiés.
 
-Licence
+License
 -------
 Mon-compte est distribué sous [licence publique générale GNU v2](http://www.gnu.org/licenses/gpl-2.0.html) ou supérieure.
 
