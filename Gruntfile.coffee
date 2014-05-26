@@ -1,6 +1,7 @@
 # Generated on 2013-08-07 using generator-webapp 0.2.7
 LIVERELOAD_PORT = 35729
 lrSnippet = require('connect-livereload')({port: LIVERELOAD_PORT})
+gateway = require 'gateway'
 
 mountFolder = (connect, dir)->
 	return connect.static(require('path').resolve(dir))
@@ -10,6 +11,14 @@ corsMiddleware = (req, res, next)->
 	res.setHeader 'Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE'
 	res.setHeader 'Access-Control-Allow-Headers', 'Content-Type'
 	next()
+
+phpMiddleware = (connect)->
+	[
+		lrSnippet
+		gateway(__dirname + '/app', {'.php': 'php-cgi'}),
+		mountFolder(connect, '.tmp'),
+		mountFolder(connect, 'app')
+	]
 
 # # Globbing
 # for performance reasons we're only matching one level down:
@@ -59,6 +68,7 @@ module.exports = (grunt)->
 					'.tmp/styles/{,*/}*.css'
 					'{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js'
 					'<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+					'<%= yeoman.app %>/**/*.php'
 				]
 
 		connect:
@@ -74,6 +84,7 @@ module.exports = (grunt)->
 						[
 							corsMiddleware
 							lrSnippet
+							gateway "#{__dirname}/app", {'.php': 'php-cgi'}
 							mountFolder(connect, '.tmp')
 							mountFolder(connect, yeomanConfig.app)
 						]
