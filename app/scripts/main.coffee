@@ -44,7 +44,6 @@ require.config
 
 	packages: [
 		'templates/helpers'
-		'views/screens'
 	]
 
 require [
