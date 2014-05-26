@@ -14,14 +14,15 @@ L'environnement de développement requiert les logiciels suivants:
 ### OSX
 * Installer [Node.js](http://nodejs.org/) et les paquets associés
   * Installer [Homebrew](http://brew.sh/)
-    * Dans le terminal, lancer les commandes suivantes : `ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"`
+    * Dans le terminal, lancer la commande suivante : `ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"`
     * Installer les outils de développement en ligne de commande de Xcode si jamais cela vous est demandé.
     * Vérifiez la bonne installation de homebrew avec la commande : `brew doctor`
     * Corrigez ce qui doit l'être le cas échéant.
   * Installez les paquets npm requis avec la commande : `npm install -g coffee-script grunt-cli bower`
 * Installer [MAMP](http://www.mamp.info/)
   * Récupérer et exécuter l'installeur depuis [la page de téléchargement](http://www.mamp.info/en/downloads/).
-  * Ajoutez les commandes php dans votre PATH avec la commande : `echo -e "export PHP_HOME=/Applications/MAMP/bin/php/php5.4.26\nexport PATH=$PHP_HOME/bin:$PATH"`
+  * Ajoutez les commandes php dans votre PATH avec la commande : `echo -e "export PHP_HOME=/Applications/MAMP/bin/php/php5.4.26\nexport PATH=$PHP_HOME/bin:$PATH" >> ~/.bash_profile`
+  * Mettez à jour votre environnement courant avec la commande : `source ~/.bash_profile`
 
 ### Linux
 * Utilisez le gestionnaire de paquet de votre distrib pour installer node.js, php 5.4 (avec php-cgi) et mysql.
