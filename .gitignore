@@ -5,7 +5,7 @@
 /app/bower_components
 /dist
 
-/php_vendor
+/vendor
 composer.lock
 
 *.log
