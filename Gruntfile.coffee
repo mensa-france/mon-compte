@@ -12,14 +12,6 @@ corsMiddleware = (req, res, next)->
 	res.setHeader 'Access-Control-Allow-Headers', 'Content-Type'
 	next()
 
-phpMiddleware = (connect)->
-	[
-		lrSnippet
-		gateway(__dirname + '/app', {'.php': 'php-cgi'}),
-		mountFolder(connect, '.tmp'),
-		mountFolder(connect, 'app')
-	]
-
 # # Globbing
 # for performance reasons we're only matching one level down:
 # 'test/spec/{,*/}*.js'
