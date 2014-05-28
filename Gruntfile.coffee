@@ -36,6 +36,7 @@ module.exports = (grunt)->
 	yeomanConfig =
 		app: 'app'
 		dist: 'dist'
+		public: 'dist/public'
 
 	grunt.initConfig
 		yeoman: yeomanConfig
@@ -116,7 +117,6 @@ module.exports = (grunt)->
 						'.tmp'
 						'<%= yeoman.dist %>/*'
 						'!<%= yeoman.dist %>/.git*'
-						'platforms/ios/www/*'
 					]
 				]
 
@@ -176,9 +176,9 @@ module.exports = (grunt)->
 
 			dist:
 				options:
-					generatedImagesDir: '<%= yeoman.dist %>/images/generated'
+					generatedImagesDir: '<%= yeoman.public %>/images/generated'
 					sassDir: '<%= yeoman.app %>/styles'
-					cssDir: '<%= yeoman.dist %>/styles'
+					cssDir: '<%= yeoman.public %>/styles'
 					environment: 'production'
 					outputStyle: 'compressed'
 
@@ -214,14 +214,14 @@ module.exports = (grunt)->
 
 		useminPrepare:
 			options:
-				dest: '<%= yeoman.dist %>'
+				dest: '<%= yeoman.public %>'
 			html: '<%= yeoman.app %>/index.html'
 
 		usemin:
 			options:
-				dirs: ['<%= yeoman.dist %>']
-			html: ['<%= yeoman.dist %>/{,*/}*.html']
-			css: ['<%= yeoman.dist %>/styles/{,*/}*.css']
+				dirs: ['<%= yeoman.public %>']
+			html: ['<%= yeoman.public %>/{,*/}*.html']
+			css: ['<%= yeoman.public %>/styles/{,*/}*.css']
 
 		imagemin:
 			dist:
@@ -229,7 +229,7 @@ module.exports = (grunt)->
 					expand: true
 					cwd: '<%= yeoman.app %>/images'
 					src: '{,**/}*.{png,jpg,jpeg}'
-					dest: '<%= yeoman.dist %>/images'
+					dest: '<%= yeoman.public %>/images'
 				]
 
 		svgmin:
@@ -238,7 +238,7 @@ module.exports = (grunt)->
 					expand: true
 					cwd: '<%= yeoman.app %>/images'
 					src: '**/*.min.svg'
-					dest: '<%= yeoman.dist %>/images'
+					dest: '<%= yeoman.public %>/images'
 				]
 
 		cssmin: {}
@@ -250,7 +250,7 @@ module.exports = (grunt)->
 		#
 		# dist:
 		#	 files:
-		#		 '<%= yeoman.dist %>/styles/main.css': [
+		#		 '<%= yeoman.public %>/styles/main.css': [
 		#			 '.tmp/styles/{,*/}*.css'
 		#			 '<%= yeoman.app %>/styles/{,*/}*.css'
 		#		 ]
@@ -276,7 +276,7 @@ module.exports = (grunt)->
 					expand: true
 					cwd: '<%= yeoman.app %>'
 					src: '*.html'
-					dest: '<%= yeoman.dist %>'
+					dest: '<%= yeoman.public %>'
 				]
 
 		# Put files not handled in other tasks here
@@ -286,34 +286,21 @@ module.exports = (grunt)->
 					expand: true
 					dot: true
 					cwd: '<%= yeoman.app %>'
-					dest: '<%= yeoman.dist %>'
+					dest: '<%= yeoman.public %>'
 					src: [
 						'*.{ico,png,txt,xml}'
 						'.htaccess'
 						'images/{,**/}*.{webp,gif}'
 						'styles/fonts/*'
 						'favicon.png'
-                        'bower_components/sass-bootstrap/fonts/*.*'
-                        'bower_components/font-awesome/fonts/*.*'
+                        '/bower_components/requirejs/require.js'
 					]
 				,
 					expand: true
 					dot: true
-					cwd: '.tmp/scripts/_placeholders'
-					dest: '<%= yeoman.dist %>/scripts/_placeholders'
-					src: '*.js'
-				,
-					expand: true
-					dot: true
-					cwd: '<%= yeoman.app %>/styles/vendor/leaflet/images'
-					dest: '<%= yeoman.dist %>/styles/vendor/leaflet/images'
-					src: '*'
-				,
-					expand: true
-					dot: true
-					cwd: '<%= yeoman.app %>/bower_components/requirejs'
-					dest: '<%= yeoman.dist %>/bower_components/requirejs'
-					src: 'require.js'
+					cwd: 'vendor'
+					dest: '<%= yeoman.dist %>/vendor'
+					src: '**/*'
 				]
 
 			styles:
@@ -345,7 +332,7 @@ module.exports = (grunt)->
 				expand: true
 				dot: true
 				cwd: '<%= yeoman.app %>/images'
-				dest: '<%= yeoman.dist %>/images'
+				dest: '<%= yeoman.public %>/images'
 				src: '**/*.svg'
 
 		concurrent:
