@@ -20,9 +20,13 @@ L'environnement de développement requiert les logiciels suivants:
     * Corrigez ce qui doit l'être le cas échéant.
   * Installez les paquets npm requis avec la commande : `npm install -g coffee-script grunt-cli bower`
 * Installer [MAMP](http://www.mamp.info/)
-  * Récupérer et exécuter l'installeur depuis [la page de téléchargement](http://www.mamp.info/en/downloads/).
+  * Récupérez et exécutez l'installeur depuis [la page de téléchargement](http://www.mamp.info/en/downloads/).
   * Ajoutez les commandes php dans votre PATH avec la commande : `echo -e "export PHP_HOME=/Applications/MAMP/bin/php/php5.4.26\nexport PATH=$PHP_HOME/bin:$PATH" >> ~/.bash_profile`
-  * Mettez à jour votre environnement courant avec la commande : `source ~/.bash_profile`
+  * Activez l'affichage des erreurs php en éditant le fichier `/Applications/MAMP/bin/php/php5.4.26/conf/php.ini`
+    * Changez les valeurs suivantes :
+      * `display_errors = On`
+      * `display_startup_errors = On`
+* Mettez à jour votre environnement courant avec la commande : `source ~/.bash_profile`
 
 ### Linux
 * Utilisez le gestionnaire de paquet de votre distrib pour installer node.js, php 5.4 (avec php-cgi) et mysql.
@@ -49,6 +53,8 @@ Mise en place du projet
 Pour démarrer le serveur de dev, il suffit alors de lancer dans le dossier du projer la commande `grunt server`.
 
 Celui-ci support le live reload lorsque les fichiers du projet sont modifiés.
+
+Pour simuler l'authentification Lemonldap, ajouter le paramètre `auth-user` dans la querystring de l'url, la valeur associée étant l'id de l'utilisateur connecté.
 
 License
 -------
