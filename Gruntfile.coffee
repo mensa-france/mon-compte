@@ -177,8 +177,6 @@ module.exports = (grunt)->
 			dist:
 				options:
 					generatedImagesDir: '<%= yeoman.public %>/images/generated'
-					sassDir: '<%= yeoman.app %>/styles'
-					cssDir: '<%= yeoman.public %>/styles'
 					environment: 'production'
 					outputStyle: 'compressed'
 
@@ -337,7 +335,7 @@ module.exports = (grunt)->
 
 		concurrent:
 			server: [
-				'compass'
+				'compass:server'
 				'coffee:dist'
 				'copy:styles'
 				'handlebars:compile'
@@ -348,7 +346,7 @@ module.exports = (grunt)->
 			]
 			dist: [
 				'coffee'
-				'compass'
+				'compass:dist'
 				'copy:styles'
 				'imagemin'
 				'svgmin'
