@@ -35,7 +35,7 @@ module.exports = (grunt)->
 	# configurable paths
 	yeomanConfig =
 		app: 'app'
-		dist: 'www'
+		dist: 'dist'
 
 	grunt.initConfig
 		yeoman: yeomanConfig
@@ -409,24 +409,6 @@ module.exports = (grunt)->
 				src: [
 					'bower.json'
 				]
-			cordova:
-				options:
-					prefix: '<widget[^>]*version=[\'"]'
-				src: [
-					'config.xml'
-				]
-			xcodeprojectShortversion:
-				options:
-					prefix: '<key>CFBundleShortVersionString</key>\\s*<string>'
-				src: [
-					'platforms/ios/Launcher/Launcher-Info.plist'
-				]
-			xcodeprojectVersion:
-				options:
-					prefix: '<key>CFBundleVersion</key>\\s*<string>'
-				src: [
-					'platforms/ios/Launcher/Launcher-Info.plist'
-				]
 
 	grunt.registerTask 'server', [
 		'clean:server'
@@ -457,13 +439,13 @@ module.exports = (grunt)->
 		'requirejs'
 		'concat'
 		'cssmin'
-		#'uglify'
+		'uglify'
 		'copy:dist'
 		'usemin'
 	]
 
 	grunt.registerTask 'default', [
 		'jshint'
-		'test'
+		#'test'
 		'build'
 	]
