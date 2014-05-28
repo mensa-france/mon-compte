@@ -5,5 +5,8 @@
 /app/bower_components
 /dist
 
+/php_vendor
+composer.lock
+
 *.log
 *.swp
