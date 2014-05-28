@@ -48,13 +48,16 @@ Mise en place du projet
 2. Dans le dossier du projet, lancer les commandes suivantes :
    * `npm install`
    * `bower install`
+3. Dans le dossier `conf`
+   * Copiez `auth-user.json.dist` en `auth-user.json`
 3. *### ici ajouter la création de la base et du fichier de conf php ###*
 
 Pour démarrer le serveur de dev, il suffit alors de lancer dans le dossier du projer la commande `grunt server`.
 
 Celui-ci support le live reload lorsque les fichiers du projet sont modifiés.
 
-Pour simuler l'authentification Lemonldap, ajouter le paramètre `auth-user` dans la querystring de l'url, la valeur associée étant l'id de l'utilisateur connecté.
+Pour simuler l'authentification Lemonldap, modifiez le userId contenu dans le fichier `auth-user.json`.
+Celui-ci est rechargé à chaque requête, vous pouvez donc le modifier sans relancer le serveur.
 
 License
 -------

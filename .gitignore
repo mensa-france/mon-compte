@@ -6,7 +6,10 @@
 /dist
 
 /vendor
-composer.lock
+/composer.lock
+
+/conf/auth-user.json
+/conf/local.php
 
 *.log
 *.swp

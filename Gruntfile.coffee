@@ -2,19 +2,10 @@
 LIVERELOAD_PORT = 35729
 lrSnippet = require('connect-livereload')({port: LIVERELOAD_PORT})
 gateway = require 'gateway'
-qs = require 'qs'
+fs = require 'fs'
 
-AUTH_PARAMETER = 'auth-user'
+AUTH_USER_CONFIG_FILE = 'conf/auth-user.json'
 LEMONLDAP_AUTH_HEADER = 'Auth-User'
-
-parseQuery = (req, res, next)->
-    if not req.query?
-    	index = req.url.indexOf '?'
-    	if index >= 0
-    		req.query = qs.parse req.url.substr(index+1)
-    	else
-    		req.query = {}
-    next()
 
 mountFolder = (connect, dir)->
 	return connect.static(require('path').resolve(dir))
@@ -26,9 +17,8 @@ corsMiddleware = (req, res, next)->
 	next()
 
 authHeaderMiddleware = (req, res, next)->
-	if req.query? && req.query[AUTH_PARAMETER]
-		userId = req.query[AUTH_PARAMETER]
-		req.headers[LEMONLDAP_AUTH_HEADER] = userId
+	authUserConf = JSON.parse fs.readFileSync(AUTH_USER_CONFIG_FILE)
+	req.headers[LEMONLDAP_AUTH_HEADER] = authUserConf.userId
 	next()
 
 # # Globbing
@@ -94,7 +84,6 @@ module.exports = (grunt)->
 				options:
 					middleware: (connect)->
 						[
-							parseQuery
 							authHeaderMiddleware
 							corsMiddleware
 							lrSnippet
