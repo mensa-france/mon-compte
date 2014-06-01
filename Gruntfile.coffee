@@ -4,7 +4,7 @@ lrSnippet = require('connect-livereload')({port: LIVERELOAD_PORT})
 gateway = require 'gateway'
 fs = require 'fs'
 
-AUTH_USER_CONFIG_FILE = 'conf/auth-user.json'
+AUTH_USER_CONFIG_FILE = 'config/auth-user.json'
 LEMONLDAP_AUTH_HEADER = 'Auth-User'
 
 mountFolder = (connect, dir)->

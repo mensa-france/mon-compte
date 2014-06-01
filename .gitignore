@@ -8,8 +8,8 @@
 /vendor
 /composer.lock
 
-/conf/auth-user.json
-/conf/local.php
+/config/auth-user.json
+/config/local.php
 
 *.log
 *.swp
