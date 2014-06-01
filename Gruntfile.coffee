@@ -18,7 +18,7 @@ corsMiddleware = (req, res, next)->
 
 authHeaderMiddleware = (req, res, next)->
 	authUserConf = JSON.parse fs.readFileSync(AUTH_USER_CONFIG_FILE)
-	req.headers[LEMONLDAP_AUTH_HEADER] = authUserConf.userId
+	req.headers[LEMONLDAP_AUTH_HEADER] = authUserConf.userId ? ''
 	next()
 
 # # Globbing
