@@ -1,0 +1,14 @@
+<?php
+
+$isDevMode = false;
+
+// the connection configuration
+$dbParams = [
+	'driver'   => 'pdo_mysql',
+	'user'     => '',
+	'password' => '',
+	'dbname'   => '',
+	'host'     => '',
+	'port'     => '',
+	'charset'  => 'utf8',
+];

@@ -9,7 +9,7 @@
 /composer.lock
 
 /config/auth-user.json
-/config/local.php
+/config/local_doctrine.php
 
 *.log
 *.swp

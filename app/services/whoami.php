@@ -1,4 +1,7 @@
 <?php
 
-require_once __DIR__.'/../../lib/lemon_ldap.php';
-echo getLemonLdapUserId();
+require_once __DIR__.'/../../vendor/autoload.php';
+
+use MonCompte\LemonLdap;
+
+echo LemonLdap::getCurrentUserId();
