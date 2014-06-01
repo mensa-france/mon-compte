@@ -39,6 +39,13 @@ L'environnement de développement requiert les logiciels suivants:
 
 ### Windows
 * Installez Linux ;-)
+  * [Ubuntu](http://www.ubuntu.com/)
+  * [Ubuntu Gnome](http://ubuntugnome.org/)
+  * [Debian](https://www.debian.org/)
+
+*Plus sérieusement, si quelqu'un utilise Windows et arrive à tout installer, merci de renseigner cette section.*
+
+*Cela dit, envisagez quand même linux ;-)*
 
 Recommandations optionnelles
 ----------------------------
