@@ -294,6 +294,7 @@ module.exports = (grunt)->
 						'styles/fonts/*'
 						'favicon.png'
                         '/bower_components/requirejs/require.js'
+                        'services/*.php'
 					]
 				,
 					expand: true
@@ -301,6 +302,12 @@ module.exports = (grunt)->
 					cwd: 'vendor'
 					dest: '<%= yeoman.dist %>/vendor'
 					src: '**/*'
+				,
+					expand: true
+					dot: true
+					cwd: 'config'
+					dest: '<%= yeoman.dist %>/config'
+					src: 'local_doctrine.php.dist'
 				]
 
 			styles:
