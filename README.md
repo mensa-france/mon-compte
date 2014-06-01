@@ -8,6 +8,7 @@ L'environnement de développement requiert les logiciels suivants:
   * coffee-script
   * grunt-cli
   * bower
+* compass
 * php et php-cgi
 * mysql
 
@@ -19,6 +20,8 @@ L'environnement de développement requiert les logiciels suivants:
     * Vérifiez la bonne installation de homebrew avec la commande : `brew doctor`
     * Corrigez ce qui doit l'être le cas échéant.
   * Installez les paquets npm requis avec la commande : `npm install -g coffee-script grunt-cli bower`
+* Installer [Compass](http://compass-style.org/)
+  * Lancez la commande : `sudo gem install compass`
 * Installer [MAMP](http://www.mamp.info/)
   * Récupérez et exécutez l'installeur depuis [la page de téléchargement](http://www.mamp.info/en/downloads/).
   * Ajoutez les commandes php dans votre PATH avec la commande : `echo -e "export PHP_HOME=/Applications/MAMP/bin/php/php5.4.26\nexport PATH=$PHP_HOME/bin:$PATH" >> ~/.bash_profile`
@@ -29,8 +32,10 @@ L'environnement de développement requiert les logiciels suivants:
 * Mettez à jour votre environnement courant avec la commande : `source ~/.bash_profile`
 
 ### Linux
-* Utilisez le gestionnaire de paquet de votre distrib pour installer node.js, php 5.4 (avec php-cgi) et mysql.
+* Utilisez le gestionnaire de paquet de votre distrib pour installer node.js, ruby gems, php 5.4 (avec php-cgi) et mysql.
 * Installer les paquets npm requis : `sudo npm install -g coffee-script grunt-cli bower`
+* Installer [Compass](http://compass-style.org/)
+  * Lancez la commande : `sudo gem install compass`
 
 ### Windows
 * Installez Linux ;-)
@@ -54,7 +59,7 @@ Mise en place du projet
 
 Pour démarrer le serveur de dev, il suffit alors de lancer dans le dossier du projer la commande `grunt server`.
 
-Celui-ci support le live reload lorsque les fichiers du projet sont modifiés.
+Celui-ci supporte le live reload lorsque les fichiers du projet sont modifiés.
 
 Pour simuler l'authentification Lemonldap, modifiez le userId contenu dans le fichier `auth-user.json`.
 Celui-ci est rechargé à chaque requête, vous pouvez donc le modifier sans relancer le serveur.
