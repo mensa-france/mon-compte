@@ -293,8 +293,9 @@ module.exports = (grunt)->
 						'images/{,**/}*.{webp,gif}'
 						'styles/fonts/*'
 						'favicon.png'
-                        '/bower_components/requirejs/require.js'
+                        'bower_components/requirejs/require.js'
                         'services/*.php'
+                        'bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/*'
 					]
 				,
 					expand: true
