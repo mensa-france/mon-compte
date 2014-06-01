@@ -3,3 +3,8 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/font
 // bower:scss
 @import '../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss';
 // endbower
+
+body {
+	padding-top: 50px; // Height of bootstrap navbar.
+}
+
