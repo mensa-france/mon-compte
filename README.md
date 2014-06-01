@@ -4,13 +4,14 @@ Prérequis
 ---------
 L'environnement de développement requiert les logiciels suivants:
 
-* Node.js
-  * coffee-script
-  * grunt-cli
-  * bower
-* compass
-* php et php-cgi
-* mysql
+* [Node.js](http://nodejs.org/)
+  * [coffee-script](http://coffeescript.org/)
+  * [grunt-cli](http://gruntjs.com/)
+  * [bower](http://bower.io/)
+* [Compass](http://compass-style.org/)
+* [php](http://www.php.net/) et php-cgi
+* [composer](https://getcomposer.org/)
+* [mysql](http://www.mysql.fr/) ou [MariaDb](https://mariadb.org/)
 
 ### OSX
 * Installer [Node.js](http://nodejs.org/) et les paquets associés
@@ -24,11 +25,16 @@ L'environnement de développement requiert les logiciels suivants:
   * Lancez la commande : `sudo gem install compass`
 * Installer [MAMP](http://www.mamp.info/)
   * Récupérez et exécutez l'installeur depuis [la page de téléchargement](http://www.mamp.info/en/downloads/).
-  * Ajoutez les commandes php dans votre PATH avec la commande : `echo -e "export PHP_HOME=/Applications/MAMP/bin/php/php5.4.26\nexport PATH=$PHP_HOME/bin:$PATH" >> ~/.bash_profile`
+  * Ajoutez les commandes php dans votre PATH avec la commande : `echo -e "\nexport PHP_HOME=/Applications/MAMP/bin/php/php5.4.26\nexport PATH=\$PHP_HOME/bin\n:\$PATH" >> ~/.bash_profile`
   * Activez l'affichage des erreurs php en éditant le fichier `/Applications/MAMP/bin/php/php5.4.26/conf/php.ini`
     * Changez les valeurs suivantes :
       * `display_errors = On`
       * `display_startup_errors = On`
+* Installer [Composer](https://getcomposer.org/)
+  * Lancez les commandes suivantes :
+    * `mkdir ~/.bin`
+    * `curl -sS https://getcomposer.org/installer | php -- --install-dir=$HOME/.bin`
+    * `echo -e "\nexport PATH=\$HOME/.bin:\$PATH\n" >> ~/.bash_profile`
 * Mettez à jour votre environnement courant avec la commande : `source ~/.bash_profile`
 
 ### Linux
@@ -36,6 +42,9 @@ L'environnement de développement requiert les logiciels suivants:
 * Installer les paquets npm requis : `sudo npm install -g coffee-script grunt-cli bower`
 * Installer [Compass](http://compass-style.org/)
   * Lancez la commande : `sudo gem install compass`
+* Installer [Composer](https://getcomposer.org/)
+  * Suivez [les instructions officielles](https://getcomposer.org/download/).
+  * Ajoutez le script (`composer.phar`) à votre PATH.
 
 ### Windows
 * Installez Linux ;-)
@@ -60,6 +69,7 @@ Mise en place du projet
 2. Dans le dossier du projet, lancer les commandes suivantes :
    * `npm install`
    * `bower install`
+   * `composer.phar install`
 3. Dans le dossier `conf`
    * Copiez `auth-user.json.dist` en `auth-user.json`
 3. *### ici ajouter la création de la base et du fichier de conf php ###*
