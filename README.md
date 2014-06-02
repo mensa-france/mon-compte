@@ -25,7 +25,7 @@ L'environnement de développement requiert les logiciels suivants:
   * Lancez la commande : `sudo gem install compass`
 * Installer [MAMP](http://www.mamp.info/)
   * Récupérez et exécutez l'installeur depuis [la page de téléchargement](http://www.mamp.info/en/downloads/).
-  * Ajoutez les commandes php dans votre PATH avec la commande : `echo -e "\nexport PHP_HOME=/Applications/MAMP/bin/php/php5.4.26\nexport PATH=\$PHP_HOME/bin\n:\$PATH" >> ~/.bash_profile`
+  * Ajoutez les commandes php dans votre PATH avec la commande : `echo -e "\nexport PHP_HOME=/Applications/MAMP/bin/php/php5.4.26\nexport PATH=\$PHP_HOME/bin:\$PATH\n" >> ~/.bash_profile`
   * Activez l'affichage des erreurs php en éditant le fichier `/Applications/MAMP/bin/php/php5.4.26/conf/php.ini`
     * Changez les valeurs suivantes :
       * `display_errors = On`
