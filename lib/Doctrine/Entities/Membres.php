@@ -140,6 +140,10 @@ class Membres
      */
     private $note;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Coordonnees", mappedBy="idMembre")
+     */
+    private $coordonnees;
 
     /**
      * Get idMembre
@@ -540,5 +544,10 @@ class Membres
     public function getNote()
     {
         return $this->note;
+    }
+
+    public function getCoordonnees()
+    {
+    	return $this->coordonnees;
     }
 }

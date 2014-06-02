@@ -54,7 +54,7 @@ class Coordonnees
      *
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Membres")
+     * @ORM\ManyToOne(targetEntity="Membres", inversedBy="coordonnees")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_membre", referencedColumnName="id_membre")
      * })

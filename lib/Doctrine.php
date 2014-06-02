@@ -34,4 +34,24 @@ class Doctrine {
 
 		return self::$entityManager;
 	}
+
+	public static function executeQuery($stringQuery, $parameters) {
+		$em = self::getEntityManager();
+		$query = $em->createQuery($stringQuery);
+		$query->setParameters($parameters);
+		return $query->getResult();
+	}
+
+	public static function executeQuerySingleResult($stringQuery, $parameters) {
+		$result = self::executeQuery($stringQuery,$parameters);
+
+		if (count($result) > 0)
+			return $result[0];
+
+		return false;
+	}
+
+	public static function findMembre($numeroMembre) {
+		return self::executeQuerySingleResult('SELECT m FROM MonCompte\Doctrine\Entities\Membres m WHERE m.idAncienSi = :id',['id'=>$numeroMembre]);
+	}
 }
