@@ -1,0 +1,22 @@
+<?php
+
+return [
+	'rootLogger' => [
+		'appenders' => ['fileAppender'],
+	],
+	'appenders' => [
+		'fileAppender' => [
+			'class' => 'LoggerAppenderFile',
+			'layout' => [
+				'class' => 'LoggerLayoutPattern',
+				'params' => [
+					'conversionPattern' => '%date %-5level [%logger] %message%newline',
+				],
+			],
+			'params' => [
+				'file' => '/tmp/php.log', // Set this to appropriate folder, ex: project folder.
+				'append' => true,
+			]
+		]
+	]
+];
