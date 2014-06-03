@@ -70,9 +70,11 @@ Mise en place du projet
    * `npm install`
    * `bower install`
    * `composer.phar install`
-3. Dans le dossier `conf`
+3. Dans le dossier `config`
    * Copiez `auth-user.json.dist` en `auth-user.json`
-3. *### ici ajouter la création de la base et du fichier de conf php ###*
+   * Copiez `local_doctrine.php.dist` en `local_doctrine.php`
+   * Copiez `log4php.php.dist` en `log4php.php`
+   * Modifier les valeurs pertinentes dans les copies des fichiers précédents.
 
 Pour démarrer le serveur de dev, il suffit alors de lancer dans le dossier du projer la commande `grunt server`.
 
