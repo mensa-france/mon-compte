@@ -306,6 +306,19 @@ class Membres implements JsonSerializable
     {
         $this->civilite = $civilite;
 
+        switch ($civilite) {
+        	case 'mister':
+        		$this->setGenre(0);
+        		break;
+        	case 'ms':
+        	case 'mrs':
+        		$this->setGenre(1);
+        		break;
+        	default:
+        		$this->setGenre(null);
+        		break;
+        }
+
         return $this;
     }
 
@@ -325,7 +338,7 @@ class Membres implements JsonSerializable
      * @param boolean $genre
      * @return Membres
      */
-    public function setGenre($genre)
+    private function setGenre($genre)
     {
         $this->genre = $genre;
 

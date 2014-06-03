@@ -21,7 +21,6 @@ define [
 			civiliteInput: '#civiliteInput'
 			enfantsInput: '#enfantsInput'
 			statutInput: '#statutInput'
-			genreInput: '#genreInput'
 			dateNaissanceInput: '#dateNaissanceInput'
 			dateNaissanceInputPicker: '#dateNaissanceInputPicker'
 
@@ -63,5 +62,35 @@ define [
 			@refreshData()
 
 		handleFormSubmit: (event)->
-			console.log 'Handling form submit.'
+			console.group 'Handling form submit.'
 			event.preventDefault()
+
+			formData =
+				nom: @ui.nomInput.val()
+				prenom: @ui.prenomInput.val()
+				devise: @ui.deviseInput.val()
+				civilite: @ui.civiliteInput.val()
+				enfants: @ui.enfantsInput.val()
+				statut: @ui.statutInput.val()
+				dateNaissance: @ui.dateNaissanceInput.val()
+
+			console.debug 'Form data:',formData
+
+			$.ajax
+				url: 'services/saveProfile.php'
+				type: 'POST'
+				timeout: TIMEOUT
+				cache: false
+				dataType: 'json'
+				data: formData
+				success: @handleData
+				error: @handleError
+
+			console.groupEnd()
+
+		handleSaveSuccess: =>
+			console.log 'Save completed successfully.'
+			@refreshData()
+
+		handleSaveError: (jqXHR, textStatus, errorThrown)=>
+			throw "Error: #{textStatus} - #{errorThrown}"
