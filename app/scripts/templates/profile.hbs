@@ -1,56 +1,71 @@
 <form role="form" class="form-horizontal">
 	<h1>Mon Profil</h1>
 
-	<h4>Membre n° <span id="numeroMembre"></span></h4>
-	<h4>Inscrit le <span id="dateInscription"></span></h4>
-	<h4>Région <span id="region"></span></h4>
+	<p>Membre n° <span id="numeroMembre"></span></p>
+	<p>Inscrit le <span id="dateInscription"></span></p>
+	<p>Région <span id="region"></span></p>
 
-	<div class="form-group">
-		<label for="civiliteInput">Civilité</label>
-		<select class="form-control" id="civiliteInput">
-			<option value="" default="">Non défini</option>
-			<option value="mister">M.</option>
-			<option value="mrs">Mme.</option>
-			<option value="ms">Mlle.</option>
-		</select>
-	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">Informations personnelles</h3>
+		</div>
+		<div class="panel-body">
+			<div class="form-group">
+				<label for="civiliteInput">Civilité</label>
+				<select class="form-control" id="civiliteInput">
+					<option value="" default="">Non défini</option>
+					<option value="mister">M.</option>
+					<option value="mrs">Mme.</option>
+					<option value="ms">Mlle.</option>
+				</select>
+			</div>
 
-	<div class="form-group">
-		<label for="prenomInput">Prénom</label>
-		<input type="text" class="form-control" id="prenomInput" placeholder="Entrez votre prénom">
-	</div>
+			<div class="form-group">
+				<label for="prenomInput">Prénom</label>
+				<input type="text" class="form-control" id="prenomInput" placeholder="Entrez votre prénom">
+			</div>
 
-	<div class="form-group">
-		<label for="nomInput">Nom</label>
-		<input type="text" class="form-control" id="nomInput" placeholder="Entrez votre nom">
-	</div>
+			<div class="form-group">
+				<label for="nomInput">Nom</label>
+				<input type="text" class="form-control" id="nomInput" placeholder="Entrez votre nom">
+			</div>
 
-	<div class="form-group">
-		<label for="dateNaissanceInput">Date de naissance</label>
-		<div class="input-append date input-group" id="dateNaissanceInputPicker" data-date-format="yyyy-mm-dd">
-			<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-			<input class="form-control" size="16" type="text" id="dateNaissanceInput" value="" readonly="">
+			<div class="form-group">
+				<label for="dateNaissanceInput">Date de naissance</label>
+				<div class="input-append date input-group" id="dateNaissanceInputPicker" data-date-format="yyyy-mm-dd">
+					<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+					<input class="form-control" size="16" type="text" id="dateNaissanceInput" value="" readonly="">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="statutInput">Statut</label>
+				<select class="form-control" id="statutInput">
+					<option value="" default="">Non défini</option>
+					<option value="single">Célibataire</option>
+					<option value="couple">En couple</option>
+					<option value="deceased">Décédé</option>
+				</select>
+			</div>
 		</div>
 	</div>
 
-	<div class="form-group">
-		<label for="statutInput">Statut</label>
-		<select class="form-control" id="statutInput">
-			<option value="" default="">Non défini</option>
-			<option value="single">Célibataire</option>
-			<option value="couple">En couple</option>
-			<option value="deceased">Décédé</option>
-		</select>
-	</div>
 
-	<div class="form-group">
-		<label for="deviseInput">Devise</label>
-		<input type="text" class="form-control" id="deviseInput" placeholder="Entrez votre devise">
-	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">Autre</h3>
+		</div>
+		<div class="panel-body">
+			<div class="form-group">
+				<label for="deviseInput">Devise</label>
+				<input type="text" class="form-control" id="deviseInput" placeholder="Entrez votre devise">
+			</div>
 
-	<div class="form-group">
-		<label for="enfantsInput">Nombre d'enfants</label>
-		<input type="number" class="form-control" id="enfantsInput" placeholder="Entrez votre nombre d'enfants" min="0">
+			<div class="form-group">
+				<label for="enfantsInput">Nombre d'enfants</label>
+				<input type="number" class="form-control" id="enfantsInput" placeholder="Entrez votre nombre d'enfants" min="0">
+			</div>
+		</div>
 	</div>
 
 	<div class="form-group">
