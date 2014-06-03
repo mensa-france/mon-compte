@@ -3,7 +3,8 @@ define [
 	'marionette'
 	'hbs!templates/profile'
 	'moment'
-],($, Marionette, hbsTemplate, Moment)->
+	'datepicker'
+],($, Marionette, hbsTemplate, Moment, _datepicker_)->
 
 	TIMEOUT = 1000*5 # ms
 
@@ -22,6 +23,7 @@ define [
 			statutInput: '#statutInput'
 			genreInput: '#genreInput'
 			dateNaissanceInput: '#dateNaissanceInput'
+			dateNaissanceInputPicker: '#dateNaissanceInputPicker'
 
 		initialize: ->
 			console.group 'Initializing ProfileView:',@options
@@ -40,12 +42,13 @@ define [
 		handleData: (data, textStatus, jqXHR)=>
 			console.group 'Received data:',data
 
+			for key, value of data
+				@ui["#{key}Input"]?.val(value)
+
 			@ui.numeroMembre.text data.numero
 			@ui.region.text data.region
 			@ui.dateInscription.text Moment(data.dateInscription).format('LL')
-
-			for key, value of data
-				@ui["#{key}Input"]?.val(value)
+			@ui.dateNaissanceInputPicker.datepicker 'update' # update datepicker value.
 
 			console.groupEnd()
 
@@ -53,4 +56,5 @@ define [
 			throw "Error: #{textStatus} - #{errorThrown}"
 
 		onRender: ->
+			@ui.dateNaissanceInputPicker.datepicker()
 			@refreshData()

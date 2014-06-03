@@ -27,7 +27,10 @@
 
 	<div class="form-group">
 		<label for="dateNaissanceInput">Date de naissance</label>
-		<input type="text" class="form-control" id="dateNaissanceInput" placeholder="Entrez votre date de naissance">
+		<div class="input-append date" id="dateNaissanceInputPicker" data-date-format="yyyy-mm-dd">
+			<span class="add-on"><span class="glyphicon glyphicon-calendar"></span></span>
+			<input class="form-control" size="16" type="text" id="dateNaissanceInput" value="" readonly="">
+		</div>
 	</div>
 
 	<div class="form-group">

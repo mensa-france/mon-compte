@@ -21,6 +21,8 @@ require.config
 		moment: '../bower_components/momentjs/moment'
 		momentFr: '../bower_components/momentjs/lang/fr'
 
+		datepicker: '../bower_components/bootstrap-datepicker/js/bootstrap-datepicker'
+
 	shim:
 		bootstrap:
 			deps: ['jquery']
@@ -40,6 +42,9 @@ require.config
 			exports: 'JSON'
 
 		'jquery.transit':
+			deps: ['jquery']
+
+		datepicker:
 			deps: ['jquery']
 
 	hbs:
