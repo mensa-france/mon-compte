@@ -25,6 +25,9 @@ define [
 			dateNaissanceInput: '#dateNaissanceInput'
 			dateNaissanceInputPicker: '#dateNaissanceInputPicker'
 
+		events:
+			'submit form': 'handleFormSubmit'
+
 		initialize: ->
 			console.group 'Initializing ProfileView:',@options
 			console.groupEnd()
@@ -58,3 +61,7 @@ define [
 		onRender: ->
 			@ui.dateNaissanceInputPicker.datepicker(language:'fr')
 			@refreshData()
+
+		handleFormSubmit: (event)->
+			console.log 'Handling form submit.'
+			event.preventDefault()
