@@ -2,7 +2,8 @@ define [
 	'jquery'
 	'marionette'
 	'hbs!templates/profile'
-],($, Marionette, hbsTemplate)->
+	'moment'
+],($, Marionette, hbsTemplate, Moment)->
 
 	TIMEOUT = 1000*5 # ms
 
@@ -12,6 +13,7 @@ define [
 		ui:
 			numeroMembre: '#numeroMembre'
 			region: '#region'
+			dateInscription: '#dateInscription'
 			nomInput: '#nomInput'
 			prenomInput: '#prenomInput'
 			deviseInput: '#deviseInput'
@@ -20,7 +22,6 @@ define [
 			statutInput: '#statutInput'
 			genreInput: '#genreInput'
 			dateNaissanceInput: '#dateNaissanceInput'
-			dateInscriptionInput: '#dateInscriptionInput'
 
 		initialize: ->
 			console.group 'Initializing ProfileView:',@options
@@ -39,8 +40,9 @@ define [
 		handleData: (data, textStatus, jqXHR)=>
 			console.group 'Received data:',data
 
-			@ui.numeroMembre.text(data.numero)
-			@ui.region.text(data.region)
+			@ui.numeroMembre.text data.numero
+			@ui.region.text data.region
+			@ui.dateInscription.text Moment(data.dateInscription).format('LL')
 
 			for key, value of data
 				@ui["#{key}Input"]?.val(value)

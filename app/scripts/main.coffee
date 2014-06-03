@@ -11,12 +11,15 @@ require.config
 		marionette: '../bower_components/backbone.marionette/lib/core/amd/backbone.marionette'
 
 		handlebars: '../bower_components/handlebars/handlebars'
-		
+
 		hbs: '../bower_components/require-handlebars-plugin/hbs'
 		json2: '../bower_components/require-handlebars-plugin/hbs/json2'
 		i18nprecompile: '../bower_components/require-handlebars-plugin/hbs/i18nprecompile'
 
 		lodash: '../bower_components/lodash/dist/lodash'
+
+		moment: '../bower_components/momentjs/moment'
+		momentFr: '../bower_components/momentjs/lang/fr'
 
 	shim:
 		bootstrap:
@@ -52,10 +55,13 @@ require [
 	'templates'
 	'templates/helpers'
 	'version'
-], (app, _, templates, templateHelpers, Version)->
+	'moment'
+	'momentFr'
+], (app, _, templates, templateHelpers, Version, Moment, MomentFr)->
 	console.log 'Application version:',Version
+	Moment.lang 'fr'
 
 	app.setMainRegion '#container'
 
 	app.start()
-	
+
