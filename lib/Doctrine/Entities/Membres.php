@@ -293,9 +293,6 @@ class Membres implements JsonSerializable
      */
     public function getEnfants()
     {
-    	if ($this->enfants == null)
-    		return 0;
-
         return $this->enfants;
     }
 

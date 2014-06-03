@@ -10,10 +10,17 @@ define [
 		template: hbsTemplate
 
 		ui:
+			numeroMembre: '#numeroMembre'
+			region: '#region'
 			nomInput: '#nomInput'
 			prenomInput: '#prenomInput'
 			deviseInput: '#deviseInput'
 			civiliteInput: '#civiliteInput'
+			enfantsInput: '#enfantsInput'
+			statutInput: '#statutInput'
+			genreInput: '#genreInput'
+			dateNaissanceInput: '#dateNaissanceInput'
+			dateInscriptionInput: '#dateInscriptionInput'
 
 		initialize: ->
 			console.group 'Initializing ProfileView:',@options
@@ -32,9 +39,11 @@ define [
 		handleData: (data, textStatus, jqXHR)=>
 			console.group 'Received data:',data
 
+			@ui.numeroMembre.text(data.numero)
+			@ui.region.text(data.region)
+
 			for key, value of data
-				if @ui["#{key}Input"]?
-					@ui["#{key}Input"].val(value)
+				@ui["#{key}Input"]?.val(value)
 
 			console.groupEnd()
 
