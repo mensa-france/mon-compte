@@ -3,6 +3,7 @@
 namespace MonCompte\Doctrine\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
 
 /**
  * Coordonnees
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="Coordonnees", indexes={@ORM\Index(name="id_membre", columns={"id_membre"})})
  * @ORM\Entity
  */
-class Coordonnees
+class Coordonnees implements JsonSerializable
 {
     /**
      * @var integer
@@ -105,6 +106,9 @@ class Coordonnees
      */
     public function getCoordonnee()
     {
+    	if ($this->getTypeCoordonnee() == 'address')
+        	return json_decode($this->coordonnee);
+
         return $this->coordonnee;
     }
 
@@ -199,4 +203,15 @@ class Coordonnees
     {
         return $this->idMembre;
     }
+
+	public function jsonSerialize()
+	{
+		return [
+			'id' => $this->getIdCoordonnee(),
+			'type' => $this->getTypeCoordonnee(),
+			'coordonnee' => $this->getCoordonnee(),
+			'private' => $this->getReserveeGestionAsso(),
+			'usage' => $this->getUsageCoordonnee(),
+		];
+	}
 }

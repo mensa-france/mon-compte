@@ -3,6 +3,9 @@
 namespace MonCompte\Doctrine\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
+
+use MonCompte\Format;
 
 /**
  * Membres
@@ -10,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="Membres")
  * @ORM\Entity
  */
-class Membres
+class Membres implements JsonSerializable
 {
     /**
      * @var integer
@@ -290,6 +293,9 @@ class Membres
      */
     public function getEnfants()
     {
+    	if ($this->enfants == null)
+    		return 0;
+
         return $this->enfants;
     }
 
@@ -548,6 +554,30 @@ class Membres
 
     public function getCoordonnees()
     {
-    	return $this->coordonnees;
+    	$result = [];
+
+    	foreach ($this->coordonnees as $coordonnee)
+    		$result[] = $coordonnee;
+
+    	return $result;
     }
+
+	public function jsonSerialize()
+	{
+		return [
+			'id' => $this->getIdMembre(),
+			'numero' => $this->getIdAncienSi(),
+			'nom' => $this->getNom(),
+			'prenom' => $this->getPrenom(),
+			'statut' => $this->getStatut(),
+			'enfants' => $this->getEnfants(),
+			'civilite' => $this->getCivilite(),
+			'genre' => $this->getGenre(),
+			'region' => $this->getRegion(),
+			'devise' => $this->getDevise(),
+			'dateNaissance' => Format::date($this->getDateNaissance()),
+			'dateInscription' => Format::date($this->getDateInscription()),
+			'coordonnees' => $this->getCoordonnees(),
+		];
+	}
 }
