@@ -2,6 +2,8 @@
 
 namespace MonCompte;
 
+use DateTime;
+
 class Format {
 	public static function date($value) {
 		$result =  $value->format('Y-m-d');
@@ -10,5 +12,14 @@ class Format {
 			return null;
 
 		return $result;
+	}
+
+	public static function filterDateTime($dateTime) {
+		if (!$dateTime)
+			$dateTime = null;
+		else if (!($dateTime instanceof DateTime))
+			$dateTime = new DateTime($dateTime);
+
+		return $dateTime;
 	}
 }
