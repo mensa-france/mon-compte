@@ -2,10 +2,12 @@
 
 return [
 	'rootLogger' => [
-		'appenders' => ['fileAppender'],
+		'appenders' => ['default'],
 	],
 	'appenders' => [
-		'fileAppender' => [
+		'default' => ['class' => 'LoggerAppenderConsole'],
+		/*
+		'default' => [
 			'class' => 'LoggerAppenderFile',
 			'layout' => [
 				'class' => 'LoggerLayoutPattern',
@@ -17,6 +19,7 @@ return [
 				'file' => '/tmp/php.log', // Set this to appropriate folder, ex: project folder.
 				'append' => true,
 			]
-		]
+		],
+		*/
 	]
 ];
