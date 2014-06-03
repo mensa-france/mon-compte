@@ -24,6 +24,12 @@ define [
 			statutInput: '#statutInput'
 			dateNaissanceInput: '#dateNaissanceInput'
 			dateNaissanceInputPicker: '#dateNaissanceInputPicker'
+			emailInput: '#emailInput'
+			telephoneInput: '#telephoneInput'
+			adresseInput: '#adresseInput'
+			codePostalInput: '#codePostalInput'
+			villeInput: '#villeInput'
+			paysInput: '#paysInput'
 
 		events:
 			'submit form': 'handleFormSubmit'

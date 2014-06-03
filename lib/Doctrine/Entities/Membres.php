@@ -579,8 +579,24 @@ class Membres implements JsonSerializable
     	return $result;
     }
 
+    private function findCoordonnee($type)
+    {
+    	foreach ($this->coordonnees as $coordonnee) {
+    		if ($coordonnee->getTypeCoordonnee() == $type)
+    			return $coordonnee;
+    	}
+
+    	return null;
+    }
+
 	public function jsonSerialize()
 	{
+		$email = $this->findCoordonnee('email');
+		$telephone = $this->findCoordonnee('phone');
+		$adresse = $this->findCoordonnee('address');
+
+		$adresseValue = $adresse ? $adresse->getCoordonnee() : null;
+
 		return [
 			'id' => $this->getIdMembre(),
 			'numero' => $this->getIdAncienSi(),
@@ -594,7 +610,12 @@ class Membres implements JsonSerializable
 			'devise' => $this->getDevise(),
 			'dateNaissance' => Format::date($this->getDateNaissance()),
 			'dateInscription' => Format::date($this->getDateInscription()),
-			'coordonnees' => $this->getCoordonnees(),
+			'email' => $email ? $email->getCoordonnee() : null,
+			'telephone' => $telephone ? $telephone->getCoordonnee() : null,
+			'adresse' => $adresseValue ? $adresseValue->address : null,
+			'ville' => $adresseValue ? $adresseValue->city : null,
+			'codePostal' => $adresseValue ? $adresseValue->code : null,
+			'pays' => $adresseValue ? $adresseValue->country : null,
 		];
 	}
 }

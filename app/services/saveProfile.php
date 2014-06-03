@@ -29,6 +29,7 @@ if ($v->validate()) {
 
 	$foundProfile = Doctrine::findMembre($currentUserId);
 
+	// Don't generate method calls to avoid potential security hole.
 	$foundProfile->setNom($formValues['nom']);
 	$foundProfile->setPrenom($formValues['prenom']);
 	$foundProfile->setCivilite($formValues['civilite']);
