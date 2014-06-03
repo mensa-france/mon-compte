@@ -4,6 +4,7 @@ namespace MonCompte\Doctrine\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
 use JsonSerializable;
+use DateTime;
 
 use MonCompte\Format;
 
@@ -409,6 +410,9 @@ class Membres implements JsonSerializable
      */
     public function setDateNaissance($dateNaissance)
     {
+    	if (!($dateNaissance instanceof DateTime))
+    		$dateNaissance = new DateTime($dateNaissance);
+
         $this->dateNaissance = $dateNaissance;
 
         return $this;
@@ -455,6 +459,9 @@ class Membres implements JsonSerializable
      */
     public function setDateInscription($dateInscription)
     {
+    	if (!($dateInscription instanceof DateTime))
+    		$dateInscription = new DateTime($dateInscription);
+
         $this->dateInscription = $dateInscription;
 
         return $this;
