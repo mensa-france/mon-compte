@@ -79,18 +79,20 @@ define [
 			@ui.dateNaissanceInputPicker.datepicker(language:'fr')
 			@refreshData()
 
+		readFormData: ->
+			data = {}
+
+			for key, input of @ui
+				if key.match UI_INPUT_REGEXP
+					data[key.replace UI_INPUT_REGEXP,''] = input.val()
+
+			data
+
 		handleFormSubmit: (event)->
 			console.group 'Handling form submit.'
 			event.preventDefault()
 
-			formData =
-				nom: @ui.nomInput.val()
-				prenom: @ui.prenomInput.val()
-				devise: @ui.deviseInput.val()
-				civilite: @ui.civiliteInput.val()
-				enfants: @ui.enfantsInput.val()
-				statut: @ui.statutInput.val()
-				dateNaissance: @ui.dateNaissanceInput.val()
+			formData = @readFormData()
 
 			console.debug 'Form data:',formData
 
