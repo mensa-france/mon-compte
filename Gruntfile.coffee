@@ -306,6 +306,12 @@ module.exports = (grunt)->
 				,
 					expand: true
 					dot: true
+					cwd: 'lib'
+					dest: '<%= yeoman.dist %>/lib'
+					src: '**/*'
+				,
+					expand: true
+					dot: true
 					cwd: 'config'
 					dest: '<%= yeoman.dist %>/config'
 					src: [
