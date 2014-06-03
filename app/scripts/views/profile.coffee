@@ -7,6 +7,7 @@ define [
 ],($, Marionette, hbsTemplate, Moment, _datepicker_)->
 
 	TIMEOUT = 1000*5 # ms
+	UI_INPUT_REGEXP = /Input$/
 
 	class ProfileView extends Marionette.ItemView
 		template: hbsTemplate
@@ -26,13 +27,30 @@ define [
 
 		events:
 			'submit form': 'handleFormSubmit'
+			'click .btn.cancel': 'handleCancel'
 
 		initialize: ->
 			console.group 'Initializing ProfileView:',@options
 			console.groupEnd()
 
+		resetForm: ->
+			console.debug 'Resetting form...'
+
+			for key, input of @ui
+				if key.match UI_INPUT_REGEXP
+					input.val null
+
+			@ui.numeroMembre.text ''
+			@ui.region.text ''
+			@ui.dateInscription.text ''
+			@ui.dateNaissanceInputPicker.datepicker 'update' # update datepicker value.
+
+		handleCancel: ->
+			@refreshData()
+
 		refreshData: ->
 			console.log 'Refreshing data...'
+			@resetForm();
 			$.ajax
 				url: 'services/getProfile.php'
 				timeout: TIMEOUT
