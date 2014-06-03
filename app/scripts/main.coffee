@@ -22,6 +22,7 @@ require.config
 		momentFr: '../bower_components/momentjs/lang/fr'
 
 		datepicker: '../bower_components/bootstrap-datepicker/js/bootstrap-datepicker'
+		datepickerFr: '../bower_components/bootstrap-datepicker/js/locales/bootstrap-datepicker.fr'
 
 	shim:
 		bootstrap:
@@ -47,6 +48,9 @@ require.config
 		datepicker:
 			deps: ['jquery']
 
+		datepickerFr:
+			deps: ['datepicker','jquery']
+
 	hbs:
 		disableI18n: true
 
@@ -62,6 +66,7 @@ require [
 	'version'
 	'moment'
 	'momentFr'
+	'datepickerFr'
 ], (app, _, templates, templateHelpers, Version, Moment, MomentFr)->
 	console.log 'Application version:',Version
 	Moment.lang 'fr'

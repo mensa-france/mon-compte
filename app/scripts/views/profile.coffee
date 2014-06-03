@@ -56,5 +56,5 @@ define [
 			throw "Error: #{textStatus} - #{errorThrown}"
 
 		onRender: ->
-			@ui.dateNaissanceInputPicker.datepicker()
+			@ui.dateNaissanceInputPicker.datepicker(language:'fr')
 			@refreshData()
