@@ -13,6 +13,7 @@ define [
 			nomInput: '#nomInput'
 			prenomInput: '#prenomInput'
 			deviseInput: '#deviseInput'
+			civiliteInput: '#civiliteInput'
 
 		initialize: ->
 			console.group 'Initializing ProfileView:',@options
