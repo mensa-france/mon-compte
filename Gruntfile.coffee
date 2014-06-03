@@ -308,7 +308,10 @@ module.exports = (grunt)->
 					dot: true
 					cwd: 'config'
 					dest: '<%= yeoman.dist %>/config'
-					src: 'local_doctrine.php.dist'
+					src: [
+						'*.dist'
+						'!auth-user.json.dist'
+					]
 				]
 
 			styles:
