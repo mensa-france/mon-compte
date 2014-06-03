@@ -596,6 +596,10 @@ class Membres implements JsonSerializable
 		$adresse = $this->findCoordonnee('address');
 
 		$adresseValue = $adresse ? $adresse->getCoordonnee() : null;
+		$adresseTokens = $adresseValue ? explode("\n", $adresseValue->address) : [];
+
+		while (count($adresseTokens) < 2)
+			array_push($adresseTokens, null);
 
 		return [
 			'id' => $this->getIdMembre(),
@@ -612,7 +616,8 @@ class Membres implements JsonSerializable
 			'dateInscription' => Format::date($this->getDateInscription()),
 			'email' => $email ? $email->getCoordonnee() : null,
 			'telephone' => $telephone ? $telephone->getCoordonnee() : null,
-			'adresse' => $adresseValue ? $adresseValue->address : null,
+			'adresse1' => $adresseTokens[0],
+			'adresse2' => $adresseTokens[1],
 			'ville' => $adresseValue ? $adresseValue->city : null,
 			'codePostal' => $adresseValue ? $adresseValue->code : null,
 			'pays' => $adresseValue ? $adresseValue->country : null,
