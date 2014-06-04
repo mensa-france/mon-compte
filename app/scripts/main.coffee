@@ -24,6 +24,8 @@ require.config
 		datepicker: '../bower_components/bootstrap-datepicker/js/bootstrap-datepicker'
 		datepickerFr: '../bower_components/bootstrap-datepicker/js/locales/bootstrap-datepicker.fr'
 
+		consolePolyfill: '../bower_components/console-polyfill/index'
+
 	shim:
 		bootstrap:
 			deps: ['jquery']
@@ -59,6 +61,7 @@ require.config
 	]
 
 require [
+	'consolePolyfill'
 	'application'
 	'underscore'
 	'templates'
@@ -67,7 +70,7 @@ require [
 	'moment'
 	'momentFr'
 	'datepickerFr'
-], (app, _, templates, templateHelpers, Version, Moment, MomentFr)->
+], (consolePolyfill, app, _, templates, templateHelpers, Version, Moment, MomentFr)->
 	console.log 'Application version:',Version
 	Moment.lang 'fr'
 
