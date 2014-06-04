@@ -4,10 +4,10 @@ require_once __DIR__.'/../../vendor/autoload.php';
 
 use MonCompte\LemonLdap;
 use MonCompte\Doctrine;
-use MonCompte\Log4php;
+use MonCompte\Logger;
 use Valitron\Validator;
 
-$logger = Log4php::getLogger('services/saveProfile');
+$logger = Logger::getLogger('services/saveProfile');
 
 $currentUserId = LemonLdap::getCurrentUserId();
 $logger->debug("Found current user id: {$currentUserId}");

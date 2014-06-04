@@ -4,9 +4,9 @@ require_once __DIR__.'/../../vendor/autoload.php';
 
 use MonCompte\LemonLdap;
 use MonCompte\Doctrine;
-use MonCompte\Log4php;
+use MonCompte\Logger;
 
-$logger = Log4php::getLogger('services/getProfile');
+$logger = Logger::getLogger('services/getProfile');
 
 $currentUserId = LemonLdap::getCurrentUserId();
 $logger->debug("Found current user id: {$currentUserId}");
