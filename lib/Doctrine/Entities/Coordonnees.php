@@ -187,7 +187,7 @@ class Coordonnees implements JsonSerializable
      * @param \Membres $idMembre
      * @return Coordonnees
      */
-    public function setIdMembre(\Membres $idMembre)
+    public function setIdMembre(Membres $idMembre)
     {
         $this->idMembre = $idMembre;
 

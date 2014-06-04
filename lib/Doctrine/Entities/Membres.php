@@ -144,7 +144,7 @@ class Membres implements JsonSerializable
     private $note;
 
     /**
-     * @ORM\OneToMany(targetEntity="Coordonnees", mappedBy="idMembre")
+     * @ORM\OneToMany(targetEntity="Coordonnees", mappedBy="idMembre", orphanRemoval=true, cascade={"persist", "remove"})
      */
     private $coordonnees;
 
@@ -564,12 +564,7 @@ class Membres implements JsonSerializable
 
     public function getCoordonnees()
     {
-    	$result = [];
-
-    	foreach ($this->coordonnees as $coordonnee)
-    		$result[] = $coordonnee;
-
-    	return $result;
+    	return $this->coordonnees;
     }
 
     private function findCoordonnee($type)
@@ -580,6 +575,33 @@ class Membres implements JsonSerializable
     	}
 
     	return null;
+    }
+
+    private function removeCoordonnees($type)
+    {
+    	$toBeRemoved = [];
+
+    	foreach ($this->coordonnees as $coordonnee) {
+    		if ($coordonnee->getTypeCoordonnee() == $type)
+    			$toBeRemoved[] = $coordonnee;
+    	}
+
+    	foreach ($toBeRemoved as $element)
+    		$this->coordonnees->removeElement($element);
+    }
+
+    public function setCoordonnee($type, $value, $isPrivate = false) {
+    	$this->removeCoordonnees($type);
+
+    	$newEmail = new Coordonnees();
+    	$newEmail->setIdCoordonnee(0); // Setting 0 will generate appropriate value.
+    	$newEmail->setIdMembre($this);
+    	$newEmail->setTypeCoordonnee($type);
+    	$newEmail->setCoordonnee($value);
+    	$newEmail->setUsageCoordonnee('home');
+    	$newEmail->setReserveeGestionAsso($isPrivate);
+
+    	$this->coordonnees[] = $newEmail;
     }
 
 	public function jsonSerialize()

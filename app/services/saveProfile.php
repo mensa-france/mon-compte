@@ -38,6 +38,17 @@ if ($v->validate()) {
 	$foundProfile->setDevise($formValues['devise']);
 	$foundProfile->setDateNaissance($formValues['dateNaissance']);
 
+	$foundProfile->setCoordonnee('email', $formValues['email']);
+	$foundProfile->setCoordonnee('phone', $formValues['telephone']);
+
+	$adresseValue = [
+		'address' => trim("{$formValues['adresse1']}\n{$formValues['adresse2']}"),
+		'code' => $formValues['codePostal'],
+		'city' => $formValues['ville'],
+		'country' => $formValues['pays'],
+	];
+	$foundProfile->setCoordonnee('address', json_encode($adresseValue));
+
 	Doctrine::persist($foundProfile);
 	Doctrine::flush();
 
