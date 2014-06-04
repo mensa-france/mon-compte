@@ -591,6 +591,9 @@ class Membres implements JsonSerializable
     }
 
     public function setCoordonnee($type, $value, $isPrivate = false) {
+    	if (is_string($isPrivate))
+    		$isPrivate = $isPrivate === 'true'; // Json decode outputs strings and not booleans...
+
     	$this->removeCoordonnees($type);
 
     	$newEmail = new Coordonnees();
@@ -630,7 +633,10 @@ class Membres implements JsonSerializable
 			'dateNaissance' => Format::date($this->getDateNaissance()),
 			'dateInscription' => Format::date($this->getDateInscription()),
 			'email' => $email ? $email->getCoordonnee() : null,
+			'emailPrive' => $email ? $email->getReserveeGestionAsso() : null,
 			'telephone' => $telephone ? $telephone->getCoordonnee() : null,
+			'telephonePrive' => $telephone ? $telephone->getReserveeGestionAsso() : null,
+			'adressePrivee' => $adresse ? $adresse->getReserveeGestionAsso() : null,
 			'adresse1' => $adresseTokens[0],
 			'adresse2' => $adresseTokens[1],
 			'ville' => $adresseValue ? $adresseValue->city : null,

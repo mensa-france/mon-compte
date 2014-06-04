@@ -29,7 +29,10 @@ define [
 			dateNaissanceInput: '#dateNaissanceInput'
 			dateNaissanceInputPicker: '#dateNaissanceInputPicker'
 			emailInput: '#emailInput'
+			emailPriveInput: '#emailPriveInput'
 			telephoneInput: '#telephoneInput'
+			telephonePriveInput: '#telephonePriveInput'
+			adressePriveeInput: '#adressePriveeInput'
 			adresse1Input: '#adresse1Input'
 			adresse2Input: '#adresse2Input'
 			codePostalInput: '#codePostalInput'
@@ -76,7 +79,11 @@ define [
 			console.group 'Received data:',data
 
 			for key, value of data
-				@ui["#{key}Input"]?.val(value)
+				input = @ui["#{key}Input"]
+				if input?.is(':checkbox') && value
+					input.prop 'checked', true;
+				else
+					input?.val(value)
 
 			@ui.numeroMembre.text data.numero
 			@ui.region.text data.region
@@ -86,7 +93,7 @@ define [
 			console.groupEnd()
 
 		handleError: (jqXHR, textStatus, errorThrown)=>
-			@showError 'Erreurs pendant la lecture du profil', "{textStatus}\n{errorThrown}"
+			@showError 'Erreurs pendant la lecture du profil', "#{textStatus}\n#{errorThrown}"
 
 		onRender: ->
 			@ui.dateNaissanceInputPicker.datepicker(language:'fr')
@@ -97,7 +104,11 @@ define [
 
 			for key, input of @ui
 				if key.match UI_INPUT_REGEXP
-					data[key.replace UI_INPUT_REGEXP,''] = input.val()
+					dataKey = key.replace UI_INPUT_REGEXP,''
+					if input.is(':checkbox')
+						data[dataKey] = (input.is(':checked') ? 1 : 0)
+					else
+						data[dataKey] = input.val()
 
 			data
 
@@ -132,7 +143,7 @@ define [
 				@refreshData()
 
 		handleSaveError: (jqXHR, textStatus, errorThrown)=>
-			@showError 'Erreurs pendant la sauvegarde', "{textStatus}\n{errorThrown}"
+			@showError 'Erreurs pendant la sauvegarde', "#{textStatus}\n#{errorThrown}"
 
 		clearMessage: ->
 			console.debug 'Clearing existing messages.'
