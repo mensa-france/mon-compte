@@ -57,6 +57,7 @@ define [
 			@ui.dateNaissanceInputPicker.datepicker 'update' # update datepicker value.
 
 		handleCancel: ->
+			@clearMessage()
 			@refreshData()
 			@scrollTop()
 
@@ -73,8 +74,6 @@ define [
 
 		handleData: (data, textStatus, jqXHR)=>
 			console.group 'Received data:',data
-
-			@clearMessage()
 
 			for key, value of data
 				@ui["#{key}Input"]?.val(value)
@@ -130,6 +129,7 @@ define [
 			else
 				console.log 'Save completed successfully.'
 				@showSuccess 'Sauvegarde du profil effectuée', 'Votre profil a été mis à jour.'
+				@refreshData()
 
 		handleSaveError: (jqXHR, textStatus, errorThrown)=>
 			@showError 'Erreurs pendant la sauvegarde', "{textStatus}\n{errorThrown}"
