@@ -52,7 +52,10 @@ define [
 
 			for key, input of @ui
 				if key.match UI_INPUT_REGEXP
-					input.val null
+					if input.is(':checkbox')
+						input.prop 'checked', false;
+					else
+						input.val null
 
 			@ui.numeroMembre.text ''
 			@ui.region.text ''
@@ -62,6 +65,7 @@ define [
 		handleCancel: ->
 			@clearMessage()
 			@refreshData()
+			@showInfo 'Réinitialisation du formulaire', 'Vos informations ont été rechargée depuis la base de donnée.'
 			@scrollTop()
 
 		refreshData: ->
