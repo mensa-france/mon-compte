@@ -71,6 +71,8 @@ module.exports = (grunt)->
 					'{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js'
 					'<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
 					'<%= yeoman.app %>/**/*.php'
+					'lib/**/*.php'
+					'vendor/**/*.php'
 				]
 
 		connect:
