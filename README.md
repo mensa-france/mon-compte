@@ -73,7 +73,6 @@ Mise en place du projet
 3. Dans le dossier `config`
    * Copiez `auth-user.json.dist` en `auth-user.json`
    * Copiez `local_doctrine.php.dist` en `local_doctrine.php`
-   * Copiez `log4php.php.dist` en `log4php.php`
    * Modifier les valeurs pertinentes dans les copies des fichiers précédents.
 
 Pour démarrer le serveur de dev, il suffit alors de lancer dans le dossier du projer la commande `grunt server`.
