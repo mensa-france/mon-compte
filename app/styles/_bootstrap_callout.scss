@@ -1,0 +1,54 @@
+
+/* Base styles (regardless of theme) */
+.bs-callout {
+	margin: 20px 0;
+	padding: 20px;
+	border-left: 3px solid #eee;
+}
+.bs-callout h4 {
+	margin-top: 0;
+}
+.bs-callout p:last-child {
+	margin-bottom: 0;
+}
+.bs-callout code,
+.bs-callout .highlight {
+	background-color: #fff;
+}
+
+/* Themes for different contexts */
+.bs-callout-danger {
+	background-color: #fdf7f7;
+	border-color: #d9534f;
+
+	h4 {
+		color: #d9534f;
+	}
+}
+
+.bs-callout-warning {
+	background-color: #fefbed;
+	border-color: #f1e7bc;
+
+	h4 {
+		color: #C09853;
+	}
+}
+
+.bs-callout-info {
+	background-color: #f0f7fd;
+	border-color: #d0e3f0;
+
+	h4 {
+		color: #3A87AD;
+	}
+}
+
+.bs-callout-success {
+	background-color: #dff0d8;
+	border-color: #4cae4c;
+
+	h4 {
+		color: #5cb85c;
+	}
+}

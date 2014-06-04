@@ -2,9 +2,12 @@ define [
 	'jquery'
 	'marionette'
 	'hbs!templates/profile'
+	'hbs!templates/messages/error'
+	'hbs!templates/messages/info'
+	'hbs!templates/messages/success'
 	'moment'
 	'datepicker'
-],($, Marionette, hbsTemplate, Moment, _datepicker_)->
+],($, Marionette, hbsTemplate, errorTemplate, infoTemplate, successTemplate, Moment, _datepicker_)->
 
 	TIMEOUT = 1000*5 # ms
 	UI_INPUT_REGEXP = /Input$/
@@ -13,6 +16,7 @@ define [
 		template: hbsTemplate
 
 		ui:
+			messageZone: '#messageZone'
 			numeroMembre: '#numeroMembre'
 			region: '#region'
 			dateInscription: '#dateInscription'
@@ -54,6 +58,7 @@ define [
 
 		handleCancel: ->
 			@refreshData()
+			@scrollTop()
 
 		refreshData: ->
 			console.log 'Refreshing data...'
@@ -69,6 +74,8 @@ define [
 		handleData: (data, textStatus, jqXHR)=>
 			console.group 'Received data:',data
 
+			@clearMessage()
+
 			for key, value of data
 				@ui["#{key}Input"]?.val(value)
 
@@ -80,7 +87,7 @@ define [
 			console.groupEnd()
 
 		handleError: (jqXHR, textStatus, errorThrown)=>
-			throw "Error: #{textStatus} - #{errorThrown}"
+			@showError 'Erreurs pendant la lecture du profil', "{textStatus}\n{errorThrown}"
 
 		onRender: ->
 			@ui.dateNaissanceInputPicker.datepicker(language:'fr')
@@ -99,6 +106,7 @@ define [
 			console.group 'Handling form submit.'
 			event.preventDefault()
 
+			@clearMessage()
 			formData = @readFormData()
 
 			console.debug 'Form data:',formData
@@ -115,9 +123,38 @@ define [
 
 			console.groupEnd()
 
-		handleSaveSuccess: =>
-			console.log 'Save completed successfully.'
-			@refreshData()
+		handleSaveSuccess: (data)=>
+			if data.errors?
+				console.warn 'Save generated errors:',data.errors
+				@showError 'Erreurs pendant la sauvegarde', data.errors.join '\n'
+			else
+				console.log 'Save completed successfully.'
+				@showSuccess 'Sauvegarde du profil effectuée', 'Votre profil a été mis à jour.'
 
 		handleSaveError: (jqXHR, textStatus, errorThrown)=>
-			throw "Error: #{textStatus} - #{errorThrown}"
+			@showError 'Erreurs pendant la sauvegarde', "{textStatus}\n{errorThrown}"
+
+		clearMessage: ->
+			console.debug 'Clearing existing messages.'
+			@ui.messageZone.empty()
+
+		showError: (title, message)=>
+			@showMessage title,message,errorTemplate
+
+		showInfo: (title, message)=>
+			@showMessage title,message,infoTemplate
+
+		showSuccess: (title, message)=>
+			@showMessage title,message,successTemplate
+
+		showMessage: (title, message, template)=>
+			$message = $(template
+				title: title
+				message: message
+			)
+
+			$message.appendTo(@ui.messageZone)
+			@scrollTop()
+
+		scrollTop: ->
+			window.scrollTo 0,0

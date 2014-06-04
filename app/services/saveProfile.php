@@ -55,5 +55,17 @@ if ($v->validate()) {
 	//echo json_encode($sentProfile);
 	echo json_encode($foundProfile);
 } else {
-	print_r($v->errors());
+	$logger->info('Found validation errors: '.print_r($v->errors(),true));
+
+	$errors = [];
+
+	foreach ($v->errors() as $fieldName => $fieldErrors) {
+		foreach ($fieldErrors as $message) {
+			$errors[] = $message;
+		}
+	}
+
+	$logger->info('Found validation errors: '.print_r($errors,true));
+
+	echo json_encode(['errors'=>$errors]);
 }

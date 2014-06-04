@@ -4,6 +4,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/font
 @import '../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss';
 // endbower
 
+@import '_bootstrap_callout.scss';
 @import '../bower_components/bootstrap-datepicker/css/datepicker3.css';
 
 body {
@@ -16,5 +17,11 @@ body {
 	#dateNaissanceInput {
 		display: inline-block;
 		width: auto;
+	}
+}
+
+#messageZone {
+	.message {
+		white-space: pre-line;
 	}
 }
