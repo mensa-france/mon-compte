@@ -75,7 +75,7 @@ Mise en place du projet
    * Copiez `local_doctrine.php.dist` en `local_doctrine.php`
    * Modifier les valeurs pertinentes dans les copies des fichiers précédents.
 
-Pour démarrer le serveur de dev, il suffit alors de lancer dans le dossier du projer la commande `grunt server`.
+Pour démarrer le serveur de dev, il suffit alors de lancer dans le dossier du projet la commande `grunt server`.
 
 Une fenêtre de navigateur va alors s'ouvrir automatiquement vers l'adresse du serveur local.
 
