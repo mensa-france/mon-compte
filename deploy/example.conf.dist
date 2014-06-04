@@ -1,0 +1,5 @@
+
+export HOST=""
+export USERNAME=""
+export TARGET_PATH=""
+export TARGET_GROUP=""

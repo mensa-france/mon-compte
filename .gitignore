@@ -14,3 +14,5 @@
 /logs
 *.log
 *.swp
+
+/deploy/*.conf

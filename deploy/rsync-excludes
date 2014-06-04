@@ -1,0 +1,11 @@
+deploy/
+.git/
+.gitignore
+.DS_Store
+*.mwb
+*.bak
+*.log
+ga.js
+
+config/*.json
+config/*.php

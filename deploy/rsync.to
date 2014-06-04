@@ -1,0 +1,44 @@
+#!/bin/bash
+
+if [ $# -lt 1 ]
+then
+	echo "Usage: $0 <CONFIG FILE>"
+	exit 1
+fi
+
+CONFIG_FILE=$(dirname $0)/$1.conf
+
+if [ -f $CONFIG_FILE ]
+then
+	source $CONFIG_FILE
+else
+	echo "Configuration file not found: $CONFIG_FILE"
+	exit 1
+fi
+
+DESTINATION=$USERNAME@$HOST:$TARGET_PATH
+
+echo "Deploying files to $DESTINATION"
+read -p "Do you want to proceed ? [Y/n] " -n 1
+echo ""
+
+if [[ $REPLY =~ ^[Yy]?$ ]]; then
+	rsync -rltDvzc --progress --delete --exclude-from=$(dirname $0)/rsync-excludes $(dirname $0)/../dist/ $DESTINATION
+
+	if [[ "$?" != "0" ]]; then
+		exit 1
+	fi
+
+	if [[ -z "$TARGET_GROUP" ]]; then
+		echo "No target group specified, skipping file group ownership change."
+	else
+		echo "Changing file group to \"$TARGET_GROUP\"..."
+		ssh $USERNAME@$HOST "chgrp -R $TARGET_GROUP $TARGET_PATH"
+
+		echo "Giving write access to group \"$TARGET_GROUP\"..."
+		ssh $USERNAME@$HOST "chmod -R g+w $TARGET_PATH"
+	fi
+else
+	echo "Canceled."
+	exit 1
+fi
