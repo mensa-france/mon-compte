@@ -11,6 +11,15 @@ body {
 	padding-top: 50px; // Height of bootstrap navbar.
 }
 
+.navbar-brand {
+	.version {
+		font-size: 0.6em;
+		//font-style: italic;
+		font-weight: normal;
+		opacity: 0.6;
+	}
+}
+
 .form-group {
 	padding: 0 15px;
 
