@@ -9,3 +9,5 @@ ga.js
 
 config/*.json
 config/*.php
+
+logs/

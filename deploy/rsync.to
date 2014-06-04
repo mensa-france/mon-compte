@@ -33,10 +33,10 @@ if [[ $REPLY =~ ^[Yy]?$ ]]; then
 		echo "No target group specified, skipping file group ownership change."
 	else
 		echo "Changing file group to \"$TARGET_GROUP\"..."
-		ssh $USERNAME@$HOST "chgrp -R $TARGET_GROUP $TARGET_PATH"
+		ssh $USERNAME@$HOST "find $TARGET_PATH -user $USERNAME -exec chgrp $TARGET_GROUP {} \\;"
 
 		echo "Giving write access to group \"$TARGET_GROUP\"..."
-		ssh $USERNAME@$HOST "chmod -R g+w $TARGET_PATH"
+		ssh $USERNAME@$HOST "find $TARGET_PATH -user $USERNAME -exec chmod g+w {} \\;"
 	fi
 else
 	echo "Canceled."
