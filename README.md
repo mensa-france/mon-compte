@@ -77,10 +77,24 @@ Mise en place du projet
 
 Pour démarrer le serveur de dev, il suffit alors de lancer dans le dossier du projer la commande `grunt server`.
 
+Une fenêtre de navigateur va alors s'ouvrir automatiquement vers l'adresse du serveur local.
+
 Celui-ci supporte le live reload lorsque les fichiers du projet sont modifiés.
 
 Pour simuler l'authentification Lemonldap, modifiez le userId contenu dans le fichier `auth-user.json`.
 Celui-ci est rechargé à chaque requête, vous pouvez donc le modifier sans relancer le serveur.
+
+Déploiement
+-----------
+* Créez un fichier `deploy/<NOM_DE_CONF>.conf` sur la base de `deploy/example.conf.dist`.
+* Compiler le projet avec la commande `grunt`
+  * *Les fichiers compilés seront générés dans le dossier `dist`.*
+* Déployez les fichiers compilés avec la commande `deploy/rsync.to <NOM_DE_CONF>`
+
+####Note :
+Si dans le fichier de configuration de déploiement la variable `TARGET_GROUP` est définie, le script tentera d'assigner **les droits d'écriture** à ce groupe unix sur les fichiers déployés par lui-même.
+
+Si la variable est vide ou absente, aucune modification ne sera effectuée.
 
 License
 -------
