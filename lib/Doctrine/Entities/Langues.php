@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="Langues", indexes={@ORM\Index(name="id_membre", columns={"id_membre"})})
  * @ORM\Entity
  */
-class Langues
+class Langues implements \JsonSerializable
 {
     /**
      * @var integer
@@ -45,7 +45,7 @@ class Langues
     /**
      * @var \Membres
      *
-     * @ORM\ManyToOne(targetEntity="Membres")
+     * @ORM\ManyToOne(targetEntity="Membres", inversedBy="langues")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_membre", referencedColumnName="id_membre")
      * })
@@ -154,4 +154,14 @@ class Langues
     {
         return $this->idMembre;
     }
+
+	public function jsonSerialize()
+	{
+		return [
+			'id' => $this->getIdLangue(),
+			'nom' => $this->getNomLangue(),
+			'niveau' => $this->getNiveauLangue(),
+			'commentaire' => $this->getCommentaires(),
+		];
+	}
 }
