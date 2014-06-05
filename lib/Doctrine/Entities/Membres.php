@@ -3,8 +3,6 @@
 namespace MonCompte\Doctrine\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
-use JsonSerializable;
-
 use MonCompte\Format;
 
 /**
@@ -13,7 +11,7 @@ use MonCompte\Format;
  * @ORM\Table(name="Membres")
  * @ORM\Entity
  */
-class Membres implements JsonSerializable
+class Membres implements \JsonSerializable
 {
     /**
      * @var integer

@@ -3,7 +3,6 @@
 namespace MonCompte\Doctrine\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
-use JsonSerializable;
 
 /**
  * Coordonnees
@@ -11,7 +10,7 @@ use JsonSerializable;
  * @ORM\Table(name="Coordonnees", indexes={@ORM\Index(name="id_membre", columns={"id_membre"})})
  * @ORM\Entity
  */
-class Coordonnees implements JsonSerializable
+class Coordonnees implements \JsonSerializable
 {
     /**
      * @var integer
