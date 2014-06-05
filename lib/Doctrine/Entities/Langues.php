@@ -29,9 +29,9 @@ class Langues implements \JsonSerializable
     private $nomLangue;
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="niveau_langue", type="boolean", nullable=false)
+     * @ORM\Column(name="niveau_langue", type="smallint", nullable=false)
      */
     private $niveauLangue;
 
@@ -89,11 +89,13 @@ class Langues implements \JsonSerializable
     /**
      * Set niveauLangue
      *
-     * @param boolean $niveauLangue
+     * @param integer $niveauLangue
      * @return Langues
      */
     public function setNiveauLangue($niveauLangue)
     {
+		$niveauLangue = min(0,max(5,$niveauLangue));
+
         $this->niveauLangue = $niveauLangue;
 
         return $this;
@@ -102,7 +104,7 @@ class Langues implements \JsonSerializable
     /**
      * Get niveauLangue
      *
-     * @return boolean
+     * @return integer
      */
     public function getNiveauLangue()
     {
