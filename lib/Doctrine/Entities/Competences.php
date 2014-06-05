@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="Competences", indexes={@ORM\Index(name="FK_Competence_membre", columns={"id_membre"})})
  * @ORM\Entity
  */
-class Competences
+class Competences implements \JsonSerializable
 {
     /**
      * @var integer
@@ -29,9 +29,9 @@ class Competences
     private $nomCompetence;
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="niveau_competence", type="boolean", nullable=false)
+     * @ORM\Column(name="niveau_competence", type="smallint", nullable=false)
      */
     private $niveauCompetence;
 
@@ -45,7 +45,7 @@ class Competences
     /**
      * @var \Membres
      *
-     * @ORM\ManyToOne(targetEntity="Membres")
+     * @ORM\ManyToOne(targetEntity="Membres", inversedBy="competences")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_membre", referencedColumnName="id_membre")
      * })
@@ -89,11 +89,12 @@ class Competences
     /**
      * Set niveauCompetence
      *
-     * @param boolean $niveauCompetence
+     * @param integer $niveauCompetence
      * @return Competences
      */
     public function setNiveauCompetence($niveauCompetence)
     {
+		$niveauCompetence = min(0,max(5,$niveauCompetence));
         $this->niveauCompetence = $niveauCompetence;
 
         return $this;
@@ -102,7 +103,7 @@ class Competences
     /**
      * Get niveauCompetence
      *
-     * @return boolean
+     * @return integer
      */
     public function getNiveauCompetence()
     {
@@ -154,4 +155,14 @@ class Competences
     {
         return $this->idMembre;
     }
+
+	public function jsonSerialize()
+	{
+		return [
+			'id' => $this->getIdCompetence(),
+			'nom' => $this->getNomCompetence(),
+			'niveau' => $this->getNiveauCompetence(),
+			'commentaire' => $this->getCommentaires(),
+		];
+	}
 }
