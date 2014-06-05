@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="Passions", indexes={@ORM\Index(name="id_membre", columns={"id_membre"})})
  * @ORM\Entity
  */
-class Passions
+class Passions implements \JsonSerializable
 {
     /**
      * @var integer
@@ -29,9 +29,9 @@ class Passions
     private $nomPassion;
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="niveau_passion", type="boolean", nullable=false)
+     * @ORM\Column(name="niveau_passion", type="smallint", nullable=false)
      */
     private $niveauPassion;
 
@@ -45,7 +45,7 @@ class Passions
     /**
      * @var \Membres
      *
-     * @ORM\ManyToOne(targetEntity="Membres")
+     * @ORM\ManyToOne(targetEntity="Membres", inversedBy="passions")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_membre", referencedColumnName="id_membre")
      * })
@@ -89,11 +89,12 @@ class Passions
     /**
      * Set niveauPassion
      *
-     * @param boolean $niveauPassion
+     * @param integer $niveauPassion
      * @return Passions
      */
     public function setNiveauPassion($niveauPassion)
     {
+		$niveauPassion = min(0,max(5,$niveauPassion));
         $this->niveauPassion = $niveauPassion;
 
         return $this;
@@ -102,7 +103,7 @@ class Passions
     /**
      * Get niveauPassion
      *
-     * @return boolean
+     * @return integer
      */
     public function getNiveauPassion()
     {
@@ -154,4 +155,14 @@ class Passions
     {
         return $this->idMembre;
     }
+
+	public function jsonSerialize()
+	{
+		return [
+			'id' => $this->getIdPassion(),
+			'nom' => $this->getNomPassion(),
+			'niveau' => $this->getNiveauPassion(),
+			'commentaire' => $this->getCommentaires(),
+		];
+	}
 }

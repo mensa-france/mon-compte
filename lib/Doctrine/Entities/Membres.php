@@ -157,6 +157,11 @@ class Membres implements \JsonSerializable
     private $competences;
 
     /**
+     * @ORM\OneToMany(targetEntity="Passions", mappedBy="idMembre", orphanRemoval=true, cascade={"persist", "remove"})
+     */
+    private $passions;
+
+    /**
      * Get idMembre
      *
      * @return integer
@@ -623,6 +628,10 @@ class Membres implements \JsonSerializable
     	return $this->competences->toArray();
     }
 
+    public function getPassions() {
+    	return $this->passions->toArray();
+    }
+
 	public function jsonSerialize()
 	{
 		$email = $this->findCoordonnee('email');
@@ -660,6 +669,7 @@ class Membres implements \JsonSerializable
 			'pays' => $adresseValue ? $adresseValue->country : null,
 			'langues' => $this->getLangues(),
 			'competences' => $this->getCompetences(),
+			'passions' => $this->getPassions(),
 		];
 	}
 }
