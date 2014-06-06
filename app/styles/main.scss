@@ -29,8 +29,12 @@ body {
 }
 
 #messageZone {
-	.message {
-		white-space: pre-line;
+	.alert {
+		margin-top: 10px;
+
+		.message {
+			white-space: pre-line;
+		}
 	}
 }
 
