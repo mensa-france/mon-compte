@@ -29,6 +29,8 @@ define [
 			passionsRegion: '#passionsRegion'
 
 		ui:
+			form: 'form'
+
 			messageZone: '#messageZone'
 			numeroMembre: '#numeroMembre'
 			region: '#region'
@@ -153,20 +155,21 @@ define [
 			console.group 'Handling form submit.'
 			event.preventDefault()
 
-			@clearMessage()
-			formData = @readFormData()
+			if @ui.form.validate()
+				@clearMessage()
+				formData = @readFormData()
 
-			console.debug 'Form data:',formData
+				console.debug 'Form data:',formData
 
-			$.ajax
-				url: 'services/saveProfile.php'
-				type: 'POST'
-				timeout: TIMEOUT
-				cache: false
-				dataType: 'json'
-				data: formData
-				success: @handleSaveSuccess
-				error: @handleSaveError
+				$.ajax
+					url: 'services/saveProfile.php'
+					type: 'POST'
+					timeout: TIMEOUT
+					cache: false
+					dataType: 'json'
+					data: formData
+					success: @handleSaveSuccess
+					error: @handleSaveError
 
 			console.groupEnd()
 
