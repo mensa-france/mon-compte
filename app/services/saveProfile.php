@@ -25,9 +25,18 @@ $v = new Validator($_POST);
 $v->rule('required',[
 	'nom',
 	'prenom',
+	'adresse1',
+	'codePostal',
+	'ville',
+	'pays',
 ])->message('{field} doit être renseigné.');
 
 $v->rule('dateFormat','dateNaissance','Y-m-d')->message('{field} n\'est pas une date valide.');
+
+$v->rule('email','email')->message('{field} n\'est pas une adresse email valide.');
+$v->rule('in','civilite',[null,'','mister','mrs','ms'])->message('{field} n\'est pas valide.');
+$v->rule('in','statut',[null,'','single','couple','deceased'])->message('{field} n\'est pas valide.');
+$v->rule('integer','enfants')->message('{field} n\'est pas un nombre entier.');
 
 header('Content-Type: application/json');
 
