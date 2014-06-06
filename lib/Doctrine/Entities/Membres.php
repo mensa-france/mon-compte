@@ -58,9 +58,9 @@ class Membres implements \JsonSerializable
     private $statut;
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="enfants", type="boolean", nullable=true)
+     * @ORM\Column(name="enfants", type="smallint", nullable=true)
      */
     private $enfants;
 
@@ -289,12 +289,12 @@ class Membres implements \JsonSerializable
     /**
      * Set enfants
      *
-     * @param boolean $enfants
+     * @param integer $enfants
      * @return Membres
      */
     public function setEnfants($enfants)
     {
-        $this->enfants = $enfants;
+        $this->enfants = intval($enfants);
 
         return $this;
     }
@@ -302,7 +302,7 @@ class Membres implements \JsonSerializable
     /**
      * Get enfants
      *
-     * @return boolean
+     * @return integer
      */
     public function getEnfants()
     {
