@@ -7,6 +7,13 @@ use MonCompte\Doctrine;
 use MonCompte\Logger;
 use Valitron\Validator;
 
+function getArrayValue($array, $key) {
+	if (!isset($array[$key]))
+		$array[$key] = [];
+
+	return $array[$key];
+}
+
 $logger = Logger::getLogger('services/saveProfile');
 
 $currentUserId = LemonLdap::getCurrentUserId();
@@ -48,6 +55,10 @@ if ($v->validate()) {
 		'country' => $formValues['pays'],
 	];
 	$foundProfile->setCoordonnee('address', json_encode($adresseValue), $formValues['adressePrivee']);
+
+	$foundProfile->setLangues(getArrayValue($formValues, 'langues'));
+	$foundProfile->setCompetences(getArrayValue($formValues, 'competences'));
+	$foundProfile->setPassions(getArrayValue($formValues, 'passions'));
 
 	Doctrine::persist($foundProfile);
 	Doctrine::flush();

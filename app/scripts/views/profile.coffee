@@ -1,4 +1,5 @@
 define [
+	'lodash'
 	'jquery'
 	'marionette'
 	'hbs!templates/profile'
@@ -7,13 +8,25 @@ define [
 	'hbs!templates/messages/success'
 	'moment'
 	'datepicker'
-],($, Marionette, hbsTemplate, errorTemplate, infoTemplate, successTemplate, Moment, _datepicker_)->
+	'views/profile/genericList'
+],(_, $, Marionette, hbsTemplate, errorTemplate, infoTemplate, successTemplate, Moment, _datepicker_, GenericListView)->
 
 	TIMEOUT = 1000*5 # ms
 	UI_INPUT_REGEXP = /Input$/
 
-	class ProfileView extends Marionette.ItemView
+	LIST_NAMES = [
+		'langues'
+		'competences'
+		'passions'
+	]
+
+	class ProfileView extends Marionette.Layout
 		template: hbsTemplate
+
+		regions:
+			languesRegion: '#languesRegion'
+			competencesRegion: '#competencesRegion'
+			passionsRegion: '#passionsRegion'
 
 		ui:
 			messageZone: '#messageZone'
@@ -45,6 +58,12 @@ define [
 
 		initialize: ->
 			console.group 'Initializing ProfileView:',@options
+
+			@lists = {}
+
+			for name in LIST_NAMES
+				@lists[name] = new GenericListView
+
 			console.groupEnd()
 
 		resetForm: ->
@@ -56,6 +75,9 @@ define [
 						input.prop 'checked', false;
 					else
 						input.val null
+
+			for list in @lists
+				list.empty()
 
 			@ui.numeroMembre.text ''
 			@ui.region.text ''
@@ -83,11 +105,15 @@ define [
 			console.group 'Received data:',data
 
 			for key, value of data
-				input = @ui["#{key}Input"]
-				if input?.is(':checkbox') && value
-					input.prop 'checked', true;
+				if _.contains LIST_NAMES, key
+					# the treat as list
+					@lists[key].setItemData value
 				else
-					input?.val(value)
+					input = @ui["#{key}Input"]
+					if input?.is(':checkbox') && value
+						input.prop 'checked', true;
+					else
+						input?.val(value)
 
 			@ui.numeroMembre.text data.numero
 			@ui.region.text data.region
@@ -101,6 +127,10 @@ define [
 
 		onRender: ->
 			@ui.dateNaissanceInputPicker.datepicker(language:'fr')
+
+			for name, view of @lists
+				@["#{name}Region"].show view
+
 			@refreshData()
 
 		readFormData: ->
@@ -113,6 +143,9 @@ define [
 						data[dataKey] = (input.is(':checked') ? 1 : 0)
 					else
 						data[dataKey] = input.val()
+
+			for name, view of @lists
+				data[name] = view.getData()
 
 			data
 

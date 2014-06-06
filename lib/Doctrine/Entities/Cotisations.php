@@ -228,7 +228,7 @@ class Cotisations
      * @param \Membres $idMembre
      * @return Cotisations
      */
-    public function setIdMembre(\Membres $idMembre = null)
+    public function setIdMembre(Membres $idMembre = null)
     {
         $this->idMembre = $idMembre;
 

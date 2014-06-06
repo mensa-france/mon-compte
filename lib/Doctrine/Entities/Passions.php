@@ -58,7 +58,7 @@ class Passions implements \JsonSerializable
      *
      * @return integer
      */
-    public function getIdPassion()
+    public function getId()
     {
         return $this->idPassion;
     }
@@ -69,7 +69,7 @@ class Passions implements \JsonSerializable
      * @param string $nomPassion
      * @return Passions
      */
-    public function setNomPassion($nomPassion)
+    public function setNom($nomPassion)
     {
         $this->nomPassion = $nomPassion;
 
@@ -81,7 +81,7 @@ class Passions implements \JsonSerializable
      *
      * @return string
      */
-    public function getNomPassion()
+    public function getNom()
     {
         return $this->nomPassion;
     }
@@ -92,9 +92,9 @@ class Passions implements \JsonSerializable
      * @param integer $niveauPassion
      * @return Passions
      */
-    public function setNiveauPassion($niveauPassion)
+    public function setNiveau($niveauPassion)
     {
-		$niveauPassion = min(0,max(5,$niveauPassion));
+		$niveauPassion = min(5,max(0,$niveauPassion));
         $this->niveauPassion = $niveauPassion;
 
         return $this;
@@ -105,7 +105,7 @@ class Passions implements \JsonSerializable
      *
      * @return integer
      */
-    public function getNiveauPassion()
+    public function getNiveau()
     {
         return $this->niveauPassion;
     }
@@ -139,7 +139,7 @@ class Passions implements \JsonSerializable
      * @param \Membres $idMembre
      * @return Passions
      */
-    public function setIdMembre(\Membres $idMembre = null)
+    public function setIdMembre(Membres $idMembre = null)
     {
         $this->idMembre = $idMembre;
 
@@ -159,9 +159,9 @@ class Passions implements \JsonSerializable
 	public function jsonSerialize()
 	{
 		return [
-			'id' => $this->getIdPassion(),
-			'nom' => $this->getNomPassion(),
-			'niveau' => $this->getNiveauPassion(),
+			'id' => $this->getId(),
+			'nom' => $this->getNom(),
+			'niveau' => $this->getNiveau(),
 			'commentaire' => $this->getCommentaires(),
 		];
 	}

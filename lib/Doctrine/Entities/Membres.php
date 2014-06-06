@@ -624,12 +624,51 @@ class Membres implements \JsonSerializable
     	return $this->langues->toArray();
     }
 
+    public function setLangues($newLangues) {
+		$this->langues->clear();
+
+		foreach ($newLangues as $langueData) {
+			$langue = new Langues();
+			$langue->setNom($langueData['nom']);
+			$langue->setNiveau($langueData['niveau']);
+			$langue->setIdMembre($this);
+
+			$this->langues->add($langue);
+		}
+    }
+
     public function getCompetences() {
     	return $this->competences->toArray();
     }
 
+    public function setCompetences($competences) {
+		$this->competences->clear();
+
+		foreach ($competences as $competenceData) {
+			$competence = new Competences();
+			$competence->setNom($competenceData['nom']);
+			$competence->setNiveau($competenceData['niveau']);
+			$competence->setIdMembre($this);
+
+			$this->competences->add($competence);
+		}
+    }
+
     public function getPassions() {
     	return $this->passions->toArray();
+    }
+
+    public function setPassions($passions) {
+		$this->passions->clear();
+
+		foreach ($passions as $passionData) {
+			$passion = new Passions();
+			$passion->setNom($passionData['nom']);
+			$passion->setNiveau($passionData['niveau']);
+			$passion->setIdMembre($this);
+
+			$this->passions->add($passion);
+		}
     }
 
 	public function jsonSerialize()

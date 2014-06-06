@@ -26,6 +26,8 @@ require.config
 
 		consolePolyfill: '../bower_components/console-polyfill/index'
 
+		startRating: '../bower_components/bootstrap-star-rating/js/star-rating'
+
 	shim:
 		bootstrap:
 			deps: ['jquery']
@@ -53,6 +55,9 @@ require.config
 		datepickerFr:
 			deps: ['datepicker','jquery']
 
+		startRating:
+			deps: ['jquery']
+
 	hbs:
 		disableI18n: true
 
@@ -70,6 +75,7 @@ require [
 	'moment'
 	'momentFr'
 	'datepickerFr'
+	'startRating'
 ], (consolePolyfill, app, _, templates, templateHelpers, Version, Moment, MomentFr)->
 	console.log 'Application version:',Version
 	Moment.lang 'fr'

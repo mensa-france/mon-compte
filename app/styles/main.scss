@@ -33,3 +33,17 @@ body {
 		white-space: pre-line;
 	}
 }
+
+.genericList {
+	.add-button {
+		font-size: .7em;
+	}
+
+	.itemContainer {
+
+		.genericItem {
+			border-bottom: 1px solid $panel-inner-border;
+			margin-bottom: 15px;
+		}
+	}
+}

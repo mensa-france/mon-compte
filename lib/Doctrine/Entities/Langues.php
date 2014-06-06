@@ -58,7 +58,7 @@ class Langues implements \JsonSerializable
      *
      * @return integer
      */
-    public function getIdLangue()
+    public function getId()
     {
         return $this->idLangue;
     }
@@ -69,7 +69,7 @@ class Langues implements \JsonSerializable
      * @param string $nomLangue
      * @return Langues
      */
-    public function setNomLangue($nomLangue)
+    public function setNom($nomLangue)
     {
         $this->nomLangue = $nomLangue;
 
@@ -81,7 +81,7 @@ class Langues implements \JsonSerializable
      *
      * @return string
      */
-    public function getNomLangue()
+    public function getNom()
     {
         return $this->nomLangue;
     }
@@ -92,9 +92,9 @@ class Langues implements \JsonSerializable
      * @param integer $niveauLangue
      * @return Langues
      */
-    public function setNiveauLangue($niveauLangue)
+    public function setNiveau($niveauLangue)
     {
-		$niveauLangue = min(0,max(5,$niveauLangue));
+		$niveauLangue = min(5,max(0,$niveauLangue));
 
         $this->niveauLangue = $niveauLangue;
 
@@ -106,7 +106,7 @@ class Langues implements \JsonSerializable
      *
      * @return integer
      */
-    public function getNiveauLangue()
+    public function getNiveau()
     {
         return $this->niveauLangue;
     }
@@ -140,7 +140,7 @@ class Langues implements \JsonSerializable
      * @param \Membres $idMembre
      * @return Langues
      */
-    public function setIdMembre(\Membres $idMembre = null)
+    public function setIdMembre(Membres $idMembre = null)
     {
         $this->idMembre = $idMembre;
 
@@ -160,9 +160,9 @@ class Langues implements \JsonSerializable
 	public function jsonSerialize()
 	{
 		return [
-			'id' => $this->getIdLangue(),
-			'nom' => $this->getNomLangue(),
-			'niveau' => $this->getNiveauLangue(),
+			'id' => $this->getId(),
+			'nom' => $this->getNom(),
+			'niveau' => $this->getNiveau(),
 			'commentaire' => $this->getCommentaires(),
 		];
 	}

@@ -58,7 +58,7 @@ class Competences implements \JsonSerializable
      *
      * @return integer
      */
-    public function getIdCompetence()
+    public function getId()
     {
         return $this->idCompetence;
     }
@@ -69,7 +69,7 @@ class Competences implements \JsonSerializable
      * @param string $nomCompetence
      * @return Competences
      */
-    public function setNomCompetence($nomCompetence)
+    public function setNom($nomCompetence)
     {
         $this->nomCompetence = $nomCompetence;
 
@@ -81,7 +81,7 @@ class Competences implements \JsonSerializable
      *
      * @return string
      */
-    public function getNomCompetence()
+    public function getNom()
     {
         return $this->nomCompetence;
     }
@@ -92,9 +92,9 @@ class Competences implements \JsonSerializable
      * @param integer $niveauCompetence
      * @return Competences
      */
-    public function setNiveauCompetence($niveauCompetence)
+    public function setNiveau($niveauCompetence)
     {
-		$niveauCompetence = min(0,max(5,$niveauCompetence));
+		$niveauCompetence = min(5,max(0,$niveauCompetence));
         $this->niveauCompetence = $niveauCompetence;
 
         return $this;
@@ -105,7 +105,7 @@ class Competences implements \JsonSerializable
      *
      * @return integer
      */
-    public function getNiveauCompetence()
+    public function getNiveau()
     {
         return $this->niveauCompetence;
     }
@@ -139,7 +139,7 @@ class Competences implements \JsonSerializable
      * @param \Membres $idMembre
      * @return Competences
      */
-    public function setIdMembre(\Membres $idMembre = null)
+    public function setIdMembre(Membres $idMembre = null)
     {
         $this->idMembre = $idMembre;
 
@@ -159,9 +159,9 @@ class Competences implements \JsonSerializable
 	public function jsonSerialize()
 	{
 		return [
-			'id' => $this->getIdCompetence(),
-			'nom' => $this->getNomCompetence(),
-			'niveau' => $this->getNiveauCompetence(),
+			'id' => $this->getId(),
+			'nom' => $this->getNom(),
+			'niveau' => $this->getNiveau(),
 			'commentaire' => $this->getCommentaires(),
 		];
 	}

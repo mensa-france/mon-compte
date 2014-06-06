@@ -198,7 +198,7 @@ class Experiences
      * @param \Membres $idMembre
      * @return Experiences
      */
-    public function setIdMembre(\Membres $idMembre = null)
+    public function setIdMembre(Membres $idMembre = null)
     {
         $this->idMembre = $idMembre;
 

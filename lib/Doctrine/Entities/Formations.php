@@ -198,7 +198,7 @@ class Formations
      * @param \Membres $idMembre
      * @return Formations
      */
-    public function setIdMembre(\Membres $idMembre = null)
+    public function setIdMembre(Membres $idMembre = null)
     {
         $this->idMembre = $idMembre;
 
