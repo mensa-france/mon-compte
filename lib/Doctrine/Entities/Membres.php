@@ -468,7 +468,7 @@ class Membres implements \JsonSerializable
      */
     public function setDateInscription($dateInscription)
     {
-        $this->dateInscription = Format::filterDateTime($dateNaissance);
+        $this->dateInscription = Format::filterDateTime($dateInscription);
 
         return $this;
     }
