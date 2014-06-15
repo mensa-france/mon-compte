@@ -19,8 +19,5 @@
     "console-polyfill": "~0.1.1",
     "bootstrap-star-rating": "~2.5.0"
   },
-  "devDependencies": {},
-  "resolutions": {
-    "jquery": "~1.11.0"
-  }
+  "devDependencies": {}
 }
