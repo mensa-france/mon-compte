@@ -116,7 +116,7 @@ define [
 			fullname = "#{CIVILITE_MAPPING[data.civilite]} #{fullname}" if CIVILITE_MAPPING[data.civilite]?
 
 			@ui.fullname.text fullname
-			@ui.dateNaissance.text Moment(data.dateInscription).format('LL')
+			@ui.dateNaissance.text Moment(data.dateNaissance).format('LL')
 
 			for key, value of data
 				if _.contains LIST_NAMES, key
