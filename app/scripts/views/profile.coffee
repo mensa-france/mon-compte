@@ -20,6 +20,11 @@ define [
 		'passions'
 	]
 
+	CIVILITE_MAPPING =
+		mister: 'M.'
+		mrs: 'Mme.'
+		ms: 'Mlle.'
+
 	class ProfileView extends Marionette.Layout
 		template: hbsTemplate
 
@@ -29,7 +34,9 @@ define [
 			passionsRegion: '#passionsRegion'
 
 		ui:
+			fullname: '#fullname'
 			form: 'form'
+			dateNaissance: '#dateNaissance'
 
 			messageZone: '#messageZone'
 			numeroMembre: '#numeroMembre'
@@ -41,7 +48,6 @@ define [
 			civiliteInput: '#civiliteInput'
 			enfantsInput: '#enfantsInput'
 			statutInput: '#statutInput'
-			dateNaissanceInput: '#dateNaissanceInput'
 			dateNaissanceInputPicker: '#dateNaissanceInputPicker'
 			emailInput: '#emailInput'
 			emailPriveInput: '#emailPriveInput'
@@ -105,6 +111,12 @@ define [
 
 		handleData: (data, textStatus, jqXHR)=>
 			console.group 'Received data:',data
+
+			fullname = "#{data.prenom} #{data.nom}"
+			fullname = "#{CIVILITE_MAPPING[data.civilite]} #{fullname}" if CIVILITE_MAPPING[data.civilite]?
+
+			@ui.fullname.text fullname
+			@ui.dateNaissance.text Moment(data.dateInscription).format('LL')
 
 			for key, value of data
 				if _.contains LIST_NAMES, key
