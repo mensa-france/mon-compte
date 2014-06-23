@@ -164,7 +164,9 @@ define [
 			console.group 'Handling form submit.'
 			event.preventDefault()
 
-			if @ui.form.validate()
+			form = @ui.form[0]
+
+			if not form.checkValidity? || form.checkValidity()
 				@clearMessage()
 				formData = @readFormData()
 
