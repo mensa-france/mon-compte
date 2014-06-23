@@ -21,9 +21,6 @@ require.config
 		moment: '../bower_components/momentjs/moment'
 		momentFr: '../bower_components/momentjs/lang/fr'
 
-		datepicker: '../bower_components/bootstrap-datepicker/js/bootstrap-datepicker'
-		datepickerFr: '../bower_components/bootstrap-datepicker/js/locales/bootstrap-datepicker.fr'
-
 		consolePolyfill: '../bower_components/console-polyfill/index'
 
 		startRating: '../bower_components/bootstrap-star-rating/js/star-rating'
@@ -49,12 +46,6 @@ require.config
 		'jquery.transit':
 			deps: ['jquery']
 
-		datepicker:
-			deps: ['jquery']
-
-		datepickerFr:
-			deps: ['datepicker','jquery']
-
 		startRating:
 			deps: ['jquery']
 
@@ -74,7 +65,6 @@ require [
 	'version'
 	'moment'
 	'momentFr'
-	'datepickerFr'
 	'startRating'
 ], (consolePolyfill, app, _, templates, templateHelpers, Version, Moment, MomentFr)->
 	console.log 'Application version:',Version

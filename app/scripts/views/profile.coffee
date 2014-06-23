@@ -7,9 +7,8 @@ define [
 	'hbs!templates/messages/info'
 	'hbs!templates/messages/success'
 	'moment'
-	'datepicker'
 	'views/profile/genericList'
-],(_, $, Marionette, hbsTemplate, errorTemplate, infoTemplate, successTemplate, Moment, _datepicker_, GenericListView)->
+],(_, $, Marionette, hbsTemplate, errorTemplate, infoTemplate, successTemplate, Moment, GenericListView)->
 
 	TIMEOUT = 1000*5 # ms
 	UI_INPUT_REGEXP = /Input$/
@@ -90,7 +89,6 @@ define [
 			@ui.numeroMembre.text ''
 			@ui.region.text ''
 			@ui.dateInscription.text ''
-			@ui.dateNaissanceInputPicker.datepicker 'update' # update datepicker value.
 
 		handleCancel: ->
 			@clearMessage()
@@ -132,7 +130,6 @@ define [
 			@ui.numeroMembre.text data.numero
 			@ui.region.text data.region
 			@ui.dateInscription.text Moment(data.dateInscription).format('LL')
-			@ui.dateNaissanceInputPicker.datepicker 'update' # update datepicker value.
 
 			console.groupEnd()
 
@@ -140,8 +137,6 @@ define [
 			@showError 'Erreurs pendant la lecture du profil', "#{textStatus}\n#{errorThrown}"
 
 		onRender: ->
-			@ui.dateNaissanceInputPicker.datepicker(language:'fr')
-
 			for name, view of @lists
 				@["#{name}Region"].show view
 
