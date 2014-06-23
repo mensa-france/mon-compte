@@ -34,8 +34,9 @@ define [
 
 		ui:
 			fullname: '#fullname'
-			form: 'form'
 			dateNaissance: '#dateNaissance'
+
+			form: 'form'
 
 			messageZone: '#messageZone'
 			numeroMembre: '#numeroMembre'
@@ -55,6 +56,7 @@ define [
 			adressePriveeInput: '#adressePriveeInput'
 			adresse1Input: '#adresse1Input'
 			adresse2Input: '#adresse2Input'
+			adresse3Input: '#adresse3Input'
 			codePostalInput: '#codePostalInput'
 			villeInput: '#villeInput'
 			paysInput: '#paysInput'

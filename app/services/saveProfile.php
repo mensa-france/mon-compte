@@ -49,7 +49,7 @@ if ($v->validate()) {
 	$foundProfile->setCoordonnee('phone', $formValues['telephone'], $formValues['telephonePrive']);
 
 	$adresseValue = [
-		'address' => trim("{$formValues['adresse1']}\n{$formValues['adresse2']}"),
+		'address' => trim("{$formValues['adresse1']}\n{$formValues['adresse2']}\n{$formValues['adresse3']}"),
 		'code' => $formValues['codePostal'],
 		'city' => $formValues['ville'],
 		'country' => $formValues['pays'],

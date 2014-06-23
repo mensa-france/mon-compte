@@ -680,7 +680,7 @@ class Membres implements \JsonSerializable
 		$adresseValue = $adresse ? $adresse->getCoordonnee() : null;
 		$adresseTokens = $adresseValue ? explode("\n", $adresseValue->address) : [];
 
-		while (count($adresseTokens) < 2)
+		while (count($adresseTokens) < 3)
 			array_push($adresseTokens, null);
 
 		return [
@@ -703,6 +703,7 @@ class Membres implements \JsonSerializable
 			'adressePrivee' => $adresse ? $adresse->getReserveeGestionAsso() : null,
 			'adresse1' => $adresseTokens[0],
 			'adresse2' => $adresseTokens[1],
+			'adresse3' => $adresseTokens[2],
 			'ville' => $adresseValue ? $adresseValue->city : null,
 			'codePostal' => $adresseValue ? $adresseValue->code : null,
 			'pays' => $adresseValue ? $adresseValue->country : null,
