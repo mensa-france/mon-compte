@@ -47,12 +47,13 @@ L'environnement de développement requiert les logiciels suivants:
   * Ajoutez le script (`composer.phar`) à votre PATH.
 
 ### Windows
-* Installez Linux ;-)
-  * [Ubuntu](http://www.ubuntu.com/)
-  * [Ubuntu Gnome](http://ubuntugnome.org/)
-  * [Debian](https://www.debian.org/)
+Installez Linux ;-)
 
-*Plus sérieusement, si quelqu'un utilise Windows et arrive à tout installer, merci de renseigner cette section.*
+* [Ubuntu](http://www.ubuntu.com/)
+* [Ubuntu Gnome](http://ubuntugnome.org/)
+* [Debian](https://www.debian.org/)
+
+Ou si vous êtes vraiment obligés, vous pouvez installer tous les logiciels requis grâce à [Chocolatey](http://chocolatey.org/).
 
 *Cela dit, envisagez quand même linux ;-)*
 
