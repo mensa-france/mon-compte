@@ -23,7 +23,7 @@ read -p "Do you want to proceed ? [Y/n] " -n 1
 echo ""
 
 if [[ $REPLY =~ ^[Yy]?$ ]]; then
-	rsync -rltDvzc --progress --delete --exclude-from=$(dirname $0)/rsync-excludes $(dirname $0)/../dist/ $DESTINATION
+	rsync -rlDvzc --progress --delete --exclude-from=$(dirname $0)/rsync-excludes $(dirname $0)/../dist/ $DESTINATION
 
 	if [[ "$?" != "0" ]]; then
 		exit 1
