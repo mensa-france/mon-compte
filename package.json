@@ -1,6 +1,6 @@
 {
   "name": "mon-compte",
-  "version": "0.1.1-SNAPSHOT",
+  "version": "0.1.1",
   "dependencies": {
     "gateway": "~0.2.1"
   },
