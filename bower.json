@@ -1,6 +1,6 @@
 {
   "name": "mon-compte",
-  "version": "0.1.1",
+  "version": "0.1.2-SNAPSHOT",
   "dependencies": {
     "requirejs": "~2.1.11",
     "jquery": "~1.11.0",
