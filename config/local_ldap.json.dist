@@ -1,0 +1,10 @@
+
+{
+	"host": "localhost",
+	"port": 389,
+	"userdn": "",
+	"password": "",
+	"basedn": "",
+	"defaultEmail": "",
+	"disabled": true
+}

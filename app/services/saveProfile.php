@@ -5,6 +5,7 @@ require_once __DIR__.'/../../vendor/autoload.php';
 use MonCompte\LemonLdap;
 use MonCompte\Doctrine;
 use MonCompte\Logger;
+use MonCompte\LdapSync;
 use Valitron\Validator;
 
 function getArrayValue($array, $key) {
@@ -16,9 +17,9 @@ function getArrayValue($array, $key) {
 
 $logger = Logger::getLogger('services/saveProfile');
 
-$currentUserId = LemonLdap::getCurrentUserId();
-$logger->debug("Found current user id: {$currentUserId}");
-$logger->debug("Reveived form data: ".print_r($_POST,true));
+$numeroMembre = LemonLdap::getCurrentUserId();
+$logger->debug("Found current user id: {$numeroMembre}");
+//$logger->debug("Reveived form data: ".print_r($_POST,true));
 
 $v = new Validator($_POST);
 
@@ -38,7 +39,7 @@ header('Content-Type: application/json');
 if ($v->validate()) {
 	$formValues = $_POST;
 
-	$foundProfile = Doctrine::findMembre($currentUserId);
+	$foundProfile = Doctrine::findMembre($numeroMembre);
 
 	// Don't generate method calls to avoid potential security hole.
 	$foundProfile->setStatut($formValues['statut']);
@@ -63,7 +64,13 @@ if ($v->validate()) {
 	Doctrine::persist($foundProfile);
 	Doctrine::flush();
 
-	//echo json_encode($sentProfile);
+	$ldapResult = LdapSync::updateProfile($numeroMembre, $foundProfile->jsonSerialize());
+
+	if ($ldapResult) {
+		// Then it's an error.
+		$logger->error("Ldap error updating status for #{$numeroMembre}: {$ldapResult}");
+	}
+
 	echo json_encode($foundProfile);
 } else {
 	$logger->info('Found validation errors: '.print_r($v->errors(),true));
