@@ -43,11 +43,11 @@ define [
 		className: 'genericList'
 		template: hbsTemplate
 
-		itemView: GenericListItemView
-		itemViewEventPrefix: 'item'
-		itemViewContainer: '.itemContainer'
+		childView: GenericListItemView
+		childViewEventPrefix: 'item'
+		childViewContainer: '.itemContainer'
 
-		itemEvents:
+		childEvents:
 			'click:close': 'handleItemClose'
 
 		events:

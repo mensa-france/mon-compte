@@ -24,7 +24,7 @@ define [
 		mrs: 'Mme.'
 		ms: 'Mlle.'
 
-	class ProfileView extends Marionette.Layout
+	class ProfileView extends Marionette.LayoutView
 		template: hbsTemplate
 
 		regions:

@@ -6,9 +6,7 @@ require.config
 		underscore: '../bower_components/underscore/underscore'
 
 		backbone: '../bower_components/backbone/backbone'
-		'backbone.babysitter': '../bower_components/backbone.babysitter/lib/backbone.babysitter'
-		'backbone.wreqr': '../bower_components/backbone.wreqr/lib/amd/backbone.wreqr'
-		marionette: '../bower_components/backbone.marionette/lib/core/amd/backbone.marionette'
+		marionette: '../bower_components/backbone.marionette/lib/backbone.marionette'
 
 		handlebars: '../bower_components/handlebars/handlebars'
 

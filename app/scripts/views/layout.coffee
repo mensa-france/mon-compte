@@ -4,7 +4,7 @@ define [
 	'views/profile'
 ],(Marionette, hbsTemplate, ProfileView)->
 
-	class LayoutView extends Marionette.Layout
+	class LayoutView extends Marionette.LayoutView
 		template: hbsTemplate
 
 		regions:
