@@ -1,7 +1,6 @@
 require.config
 	paths:
 		jquery: '../bower_components/jquery/dist/jquery'
-		'jquery.transit': '../bower_components/jquery.transit/jquery.transit'
 
 		underscore: '../bower_components/underscore/underscore'
 
@@ -19,17 +18,16 @@ require.config
 
 		startRating: '../bower_components/bootstrap-star-rating/js/star-rating'
 
-	shim:
-		bootstrap:
-			deps: ['jquery']
-			exports: 'jquery'
+		bootstrap: '../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap'
 
+	map:
+		bootstrap:
+			'jQuery': 'jquery'
+
+	shim:
 		backbone:
 			deps: ['jquery','underscore']
 			exports: 'Backbone'
-
-		'jquery.transit':
-			deps: ['jquery']
 
 		startRating:
 			deps: ['jquery']
@@ -41,14 +39,12 @@ require.config
 require [
 	'consolePolyfill'
 	'application'
-	'underscore'
-	'templates'
-	'templates/helpers'
 	'version'
 	'moment'
 	'momentFr'
+	'bootstrap'
 	'startRating'
-], (consolePolyfill, app, _, templates, templateHelpers, Version, Moment, MomentFr)->
+], (consolePolyfill, app, Version, Moment, MomentFr)->
 	console.log 'Application version:',Version
 	Moment.lang 'fr'
 
