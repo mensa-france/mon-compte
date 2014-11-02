@@ -20,13 +20,11 @@ require.config
 
 		bootstrap: '../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap'
 
-	map:
-		bootstrap:
-			'jQuery': 'jquery'
-
 	shim:
-		startRating:
+		bootstrap:
 			deps: ['jquery']
+		startRating:
+			deps: ['bootstrap','jquery']
 
 	packages: [
 		'templates/helpers'
