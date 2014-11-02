@@ -25,10 +25,6 @@ require.config
 			'jQuery': 'jquery'
 
 	shim:
-		backbone:
-			deps: ['jquery','underscore']
-			exports: 'Backbone'
-
 		startRating:
 			deps: ['jquery']
 
