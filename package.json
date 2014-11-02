@@ -2,7 +2,7 @@
   "name": "mon-compte",
   "version": "0.1.4-SNAPSHOT",
   "dependencies": {
-    "gateway": "~0.2.1"
+    "gateway": "~1.0.0"
   },
   "devDependencies": {
     "grunt": "~0.4.4",
