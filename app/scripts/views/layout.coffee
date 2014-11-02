@@ -1,11 +1,11 @@
 define [
 	'marionette'
-	'hbs!templates/layout'
+	'templates'
 	'views/profile'
-],(Marionette, hbsTemplate, ProfileView)->
+],(Marionette, templates, ProfileView)->
 
 	class LayoutView extends Marionette.LayoutView
-		template: hbsTemplate
+		template: templates.layout
 
 		regions:
 			mainRegion: '#mainRegion'

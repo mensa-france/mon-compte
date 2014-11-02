@@ -1,9 +1,8 @@
 define [
 	'backbone'
 	'marionette'
-	'hbs!templates/profile/genericList'
-	'hbs!templates/profile/genericListItem'
-],(Backbone, Marionette, hbsTemplate, hbsItemTemplate)->
+	'templates'
+],(Backbone, Marionette, templates)->
 
 	RATING_OPTIONS =
 		size: 'xs'
@@ -19,7 +18,7 @@ define [
 
 	class GenericListItemView extends Marionette.ItemView
 		className: 'genericItem'
-		template: hbsItemTemplate
+		template: templates.profile_genericListItem
 
 		triggers:
 			'click .close': 'click:close'
@@ -41,7 +40,7 @@ define [
 
 	class GenericListView extends Marionette.CompositeView
 		className: 'genericList'
-		template: hbsTemplate
+		template: templates.profile_genericList
 
 		childView: GenericListItemView
 		childViewEventPrefix: 'item'

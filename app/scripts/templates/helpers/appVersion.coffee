@@ -1,7 +1,7 @@
 define [
-    'hbs/handlebars'
+    'handlebars'
     'version'
 ],(Handlebars, version)->
- 
+
     Handlebars.registerHelper 'appVersion', ->
         version

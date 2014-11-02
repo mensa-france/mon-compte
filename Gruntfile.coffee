@@ -212,7 +212,7 @@ module.exports = (grunt)->
 					useStrict: true
 					wrap: true
 					#uglify2: {} # https:#github.com/mishoo/UglifyJS2
-					stubModule: ['handlebars']
+					#stubModule: ['handlebars']
 
 		useminPrepare:
 			options:
@@ -394,9 +394,9 @@ module.exports = (grunt)->
 		handlebars:
 			compile:
 				options:
-					amd: true
+					amd: ['handlebars','templates/helpers']
 					processName: (filename)->
-						filename.replace('app/scripts/templates/', '').replace('.hbs', '')
+						filename.replace('app/scripts/templates/', '').replace('.hbs', '').replace(/\//g,'_')
 				files:
 					'.tmp/scripts/templates.js': ['<%= yeoman.app %>/scripts/templates/**/*.hbs']
 

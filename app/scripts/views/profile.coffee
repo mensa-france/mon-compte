@@ -2,13 +2,10 @@ define [
 	'lodash'
 	'jquery'
 	'marionette'
-	'hbs!templates/profile'
-	'hbs!templates/messages/error'
-	'hbs!templates/messages/info'
-	'hbs!templates/messages/success'
+	'templates'
 	'moment'
 	'views/profile/genericList'
-],(_, $, Marionette, hbsTemplate, errorTemplate, infoTemplate, successTemplate, Moment, GenericListView)->
+],(_, $, Marionette, templates, Moment, GenericListView)->
 
 	TIMEOUT = 1000*5 # ms
 	UI_INPUT_REGEXP = /Input$/
@@ -25,7 +22,7 @@ define [
 		ms: 'Mlle.'
 
 	class ProfileView extends Marionette.LayoutView
-		template: hbsTemplate
+		template: templates.profile
 
 		regions:
 			languesRegion: '#languesRegion'
@@ -201,13 +198,13 @@ define [
 			@ui.messageZone.empty()
 
 		showError: (title, message)=>
-			@showMessage title,message,errorTemplate
+			@showMessage title,message,templates.messages_error
 
 		showInfo: (title, message)=>
-			@showMessage title,message,infoTemplate
+			@showMessage title,message,templates.messages_info
 
 		showSuccess: (title, message)=>
-			@showMessage title,message,successTemplate
+			@showMessage title,message,templates.messages_success
 
 		showMessage: (title, message, template)=>
 			$message = $(template

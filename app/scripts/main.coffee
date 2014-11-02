@@ -8,11 +8,7 @@ require.config
 		backbone: '../bower_components/backbone/backbone'
 		marionette: '../bower_components/backbone.marionette/lib/backbone.marionette'
 
-		handlebars: '../bower_components/handlebars/handlebars'
-
-		hbs: '../bower_components/require-handlebars-plugin/hbs'
-		json2: '../bower_components/require-handlebars-plugin/hbs/json2'
-		i18nprecompile: '../bower_components/require-handlebars-plugin/hbs/i18nprecompile'
+		handlebars: '../bower_components/handlebars/handlebars.runtime'
 
 		lodash: '../bower_components/lodash/dist/lodash'
 
@@ -28,27 +24,15 @@ require.config
 			deps: ['jquery']
 			exports: 'jquery'
 
-		underscore:
-			exports: '_'
-
 		backbone:
 			deps: ['jquery','underscore']
 			exports: 'Backbone'
-
-		handlebars:
-			exports: 'Handlebars'
-
-		json2:
-			exports: 'JSON'
 
 		'jquery.transit':
 			deps: ['jquery']
 
 		startRating:
 			deps: ['jquery']
-
-	hbs:
-		disableI18n: true
 
 	packages: [
 		'templates/helpers'
