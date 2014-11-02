@@ -12,7 +12,7 @@ require.config
 		lodash: '../bower_components/lodash/dist/lodash'
 
 		moment: '../bower_components/momentjs/moment'
-		momentFr: '../bower_components/momentjs/lang/fr'
+		momentFr: '../bower_components/momentjs/locale/fr'
 
 		consolePolyfill: '../bower_components/console-polyfill/index'
 
