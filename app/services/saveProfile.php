@@ -6,6 +6,7 @@ use MonCompte\LemonLdap;
 use MonCompte\Doctrine;
 use MonCompte\Logger;
 use MonCompte\LdapSync;
+use MonCompte\Format;
 use Valitron\Validator;
 
 function getArrayValue($array, $key) {
@@ -34,10 +35,24 @@ $v->rule('email','email')->message('{field} n\'est pas une adresse email valide.
 $v->rule('in','statut',[null,'','single','couple','deceased'])->message('{field} n\'est pas valide.');
 $v->rule('integer','enfants')->message('{field} n\'est pas un nombre entier.');
 
+$MAX_LENGTHS = [
+	'adresse1' => 35,
+	'adresse2' => 35,
+	'adresse3' => 35,
+	'codePostal' => 20,
+	'ville' => 50,
+	'pays' => 50,
+	'telephone' => 20,
+	'email' => 100,
+];
+
 header("Content-type: application/json; charset=utf-8'");
 
 if ($v->validate()) {
 	$formValues = $_POST;
+
+	foreach ($MAX_LENGTHS as $key => $value)
+		$formValues[$key] = Format::limitLength($formValues[$key], $MAX_LENGTHS[$key]);
 
 	$foundProfile = Doctrine::findMembre($numeroMembre);
 

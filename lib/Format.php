@@ -5,6 +5,14 @@ namespace MonCompte;
 use DateTime;
 
 class Format {
+
+	public static function limitLength($value, $maxLength) {
+		if (is_string($value))
+			$value = substr(trim($value), 0, $maxLength);
+
+		return $value;
+	}
+
 	public static function date($value) {
 		$result =  $value->format('Y-m-d');
 
