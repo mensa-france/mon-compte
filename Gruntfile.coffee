@@ -416,7 +416,11 @@ module.exports = (grunt)->
 					'bower.json'
 				]
 
-	grunt.registerTask 'server', [
+	grunt.registerTask 'server', ->
+		grunt.log.warn 'The `server` task has been deprecated. Use `grunt serve` to start a server.'
+		grunt.task.run ['serve']
+
+	grunt.registerTask 'serve', [
 		'clean:server'
 		'concurrent:server'
 		'version:js'
