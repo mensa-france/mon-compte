@@ -34,7 +34,7 @@ $v->rule('email','email')->message('{field} n\'est pas une adresse email valide.
 $v->rule('in','statut',[null,'','single','couple','deceased'])->message('{field} n\'est pas valide.');
 $v->rule('integer','enfants')->message('{field} n\'est pas un nombre entier.');
 
-header('Content-Type: application/json');
+header("Content-type: application/json; charset=utf-8'");
 
 if ($v->validate()) {
 	$formValues = $_POST;

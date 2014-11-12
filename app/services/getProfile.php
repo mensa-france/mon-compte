@@ -13,6 +13,6 @@ $logger->debug("Found current user id: {$currentUserId}");
 
 $foundProfile = Doctrine::findMembre($currentUserId);
 
-header('Content-Type: application/json');
+header("Content-type: application/json; charset=utf-8'");
 //echo json_encode($sentProfile);
 echo json_encode($foundProfile);
