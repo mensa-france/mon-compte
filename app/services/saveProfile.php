@@ -43,7 +43,7 @@ $MAX_LENGTHS = [
 	'ville' => 50,
 	'pays' => 50,
 	'telephone' => 20,
-	'email' => 100,
+	'email' => 127,
 ];
 
 header("Content-type: application/json; charset=utf-8'");
