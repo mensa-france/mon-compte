@@ -2,7 +2,7 @@
 	"require": {
 		"php": ">=5.4.4",
 		"doctrine/orm": "2.4.*",
-		"vlucas/valitron": "~1.1.5",
+		"vlucas/valitron": "~1.2.2",
 		"katzgrau/klogger": "1.0.*"
 	},
 	"autoload": {
